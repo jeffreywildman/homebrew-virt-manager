@@ -67,8 +67,12 @@ class VirtManager < Formula
 
     bin.install Dir[libexec/"bin/*"]
     bin.env_script_all_files(libexec/"bin", :PYTHONPATH => ENV["PYTHONPATH"])
-    
-    # TODO: symlink the schema files in /usr/local/share/glib-2.0/schemas
+
+    # install and link schemas
+    share.install Dir[libexec/"share/glib-2.0"]
+
+    # install and link icons
+    share.install Dir[libexec/"share/icons"]
   end
 
   def post_install

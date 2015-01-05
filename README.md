@@ -18,4 +18,3 @@ Note: SSH passwords for connecting to remote URIs are not prompted unless --debu
 * Get vnc console working: need formulas for dependencies gtk-vnc and spice-gtk3.
 * Extend formula to support brewing virt-manager with system python.
 * When available, update url for libvirt-python to pypi.python.org.
-* Symlink installed files, e.g. schema files.
