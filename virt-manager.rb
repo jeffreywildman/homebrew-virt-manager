@@ -17,8 +17,8 @@ class VirtManager < Formula
   depends_on :x11 
   depends_on "libosinfo"
  
-  # TODO: need gtk-vnc and spice-gtk for console
-  #depends_on "gtk-vnc"
+  depends_on "gtk-vnc"
+  # TODO: need spice-gtk for console
   #depends_on "spice-gtk3"
   
   depends_on "libvirt"
