@@ -6,7 +6,7 @@ class GtkVnc < Formula
   depends_on "pkg-config" => :build
   depends_on "intltool" => :build
   depends_on "libtool" => :build
-  #depends_on "vala" => :build
+  depends_on "vala" => :build
   depends_on "gobject-introspection" => :build
 
   depends_on "gtk+3"
@@ -21,7 +21,6 @@ class GtkVnc < Formula
     system "./configure", "--disable-dependency-tracking",
                           "--disable-silent-rules",
                           "--with-gtk=3.0",
-                          "--disable-vala",
                           "--enable-introspection",
                           "--with-coroutine=gthread",
                           "--prefix=#{prefix}"
