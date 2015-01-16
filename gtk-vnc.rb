@@ -10,7 +10,7 @@ class GtkVnc < Formula
 
   depends_on "gtk+3"
   depends_on "gnutls"
-  #depends_on "glib"
+  depends_on "glib"
   #depends_on :x11 # if your formula requires any X11/XQuartz components
 
   # TODO: audio?
@@ -22,6 +22,7 @@ class GtkVnc < Formula
                           "--with-gtk=3.0",
                           "--disable-vala",
                           "--enable-introspection",
+                          "--with-coroutine=gthread",
                           "--prefix=#{prefix}"
     system "make", "install"
   end
