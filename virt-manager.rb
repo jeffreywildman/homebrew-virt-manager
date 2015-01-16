@@ -16,10 +16,10 @@ class VirtManager < Formula
   depends_on "d-bus"
   depends_on :x11 
   depends_on "libosinfo"
- 
+
+  # TODO: audio
   depends_on "gtk-vnc"
-  # TODO: need spice-gtk for console
-  #depends_on "spice-gtk3"
+  depends_on "spice-gtk"
   
   depends_on "libvirt"
   depends_on "hicolor-icon-theme"
