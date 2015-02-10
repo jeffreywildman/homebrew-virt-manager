@@ -25,11 +25,9 @@ class VirtManager < Formula
   depends_on "hicolor-icon-theme"
   depends_on "gnome-icon-theme"
 
-  # Grab from https://pypi.python.org/ when available
-  # See: http://forums.gentoo.org/viewtopic-p-7666282.html?sid=92edaf056c2ebfab536fc36f07e876b5
   resource "libvirt-python" do
-    url "http://libvirt.org/sources/python/libvirt-python-1.2.10.tar.gz"
-    sha1 "4ad64489f3d19eca72276b6d5314f50f04d1d12d"
+    url "https://pypi.python.org/packages/source/l/libvirt-python/libvirt-python-1.2.12.tar.gz"
+    sha1 "aa3c25ff2ba3a511931332721e9b5b3baddfc777"
   end
 
   # dependency of urlgrabber
