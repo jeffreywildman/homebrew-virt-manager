@@ -1,6 +1,6 @@
 class LibvirtGlib < Formula
-  homepage "http://libvirt.org/"
-  url "ftp://ftp.libvirt.org/libvirt/glib/libvirt-glib-0.1.9.tar.gz"
+  homepage "https://libvirt.org/"
+  url "https://libvirt.org/sources/glib/libvirt-glib-0.1.9.tar.gz"
   sha1 "ad54f51bf2afd5c7a23b7ee81a43dc7e61eadce2"
 
   depends_on "pkg-config" => :build
