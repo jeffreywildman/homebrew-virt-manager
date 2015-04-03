@@ -46,7 +46,7 @@ class VirtManager < Formula
     sha1 "f9a16ddb3cf774b8dcf8894c2f4295c4e17d0ed3"
   end
 
-  patch :DATA # fix shebangs, update location of gtk-update-icon-cache and glib-compile-schemas
+  patch :DATA # fix shebangs
 
   def install
     ENV.prepend_create_path "PYTHONPATH", "#{libexec}/vendor/lib/python2.7/site-packages"
@@ -131,67 +131,3 @@ index 4e0848c..eb40bfa 100755
  #
  # Copyright 2013-2014 Red Hat, Inc.
  # Cole Robinson <crobinso@redhat.com>
-diff --git a/virt-manager.spec b/virt-manager.spec
-index 52c4969..caffea3 100644
---- a/virt-manager.spec
-+++ b/virt-manager.spec
-@@ -144,21 +144,21 @@ python setup.py install -O1 --root=$RPM_BUILD_ROOT
-
- %post
- /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
--/usr/bin/update-desktop-database &> /dev/null || :
-+/usr/local/bin/update-desktop-database &> /dev/null || :
-
-
- %postun
- if [ $1 -eq 0 ] ; then
-     /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null
--    /usr/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
--    /usr/bin/glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
-+    /usr/local/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
-+    /usr/local/bin/glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
- fi
--/usr/bin/update-desktop-database &> /dev/null || :
-+/usr/local/bin/update-desktop-database &> /dev/null || :
-
-
- %posttrans
--/usr/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
--/usr/bin/glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
-+/usr/local/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
-+/usr/local/bin/glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
-
-
- %files
-diff --git a/virt-manager.spec.in b/virt-manager.spec.in
-index e6991d8..577e5c3 100644
---- a/virt-manager.spec.in
-+++ b/virt-manager.spec.in
-@@ -144,21 +144,21 @@ python setup.py install -O1 --root=$RPM_BUILD_ROOT
-
- %post
- /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
--/usr/bin/update-desktop-database &> /dev/null || :
-+/usr/local/bin/update-desktop-database &> /dev/null || :
-
-
- %postun
- if [ $1 -eq 0 ] ; then
-     /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null
--    /usr/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
--    /usr/bin/glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
-+    /usr/local/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
-+    /usr/local/bin/glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
- fi
--/usr/bin/update-desktop-database &> /dev/null || :
-+/usr/local/bin/update-desktop-database &> /dev/null || :
-
-
- %posttrans
--/usr/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
--/usr/bin/glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
-+/usr/local/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
-+/usr/local/bin/glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
-
-
- %files
