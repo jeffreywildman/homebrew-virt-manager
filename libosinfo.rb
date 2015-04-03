@@ -1,7 +1,7 @@
 class Libosinfo < Formula
   homepage "https://libosinfo.org/"
   url "https://fedorahosted.org/releases/l/i/libosinfo/libosinfo-0.2.11.tar.gz"
-  sha1 "5123247ce495136df8cae6bf889b70c43ab33f17"
+  sha256 "bb6ba136756b26045ba3ed9b3c1b0920a639dd80b007769a1df356d8e2fe0921"
 
   depends_on "pkg-config" => :build
   depends_on "intltool" => :build

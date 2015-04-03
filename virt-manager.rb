@@ -1,7 +1,7 @@
 class VirtManager < Formula
   homepage "https://virt-manager.org/"
   url "https://virt-manager.org/download/sources/virt-manager/virt-manager-1.1.0.tar.gz"
-  sha1 "01b80584dad46fc79e57ecc3af4096332ab83fce"
+  sha256 "ab0906cb15a132f1893f89ac4ca211c6c2c9c2d1860fbc285edbf9451c0f7941"
 
   depends_on "pkg-config" => :build
   depends_on "intltool" => :build
@@ -27,23 +27,23 @@ class VirtManager < Formula
 
   resource "libvirt-python" do
     url "https://libvirt.org/sources/python/libvirt-python-1.2.14.tar.gz"
-    sha1 "1a3b5985d3db1b8d29da5486cc7c65a9bb91da03"
+    sha256 "0dc3c2bd8eeb570921e7c5cc7cfc202795e5ffd63b0f356ae89dbe0575ee0581"
   end
 
   # dependency of urlgrabber
   resource "pycurl" do
     url "https://pypi.python.org/packages/source/p/pycurl/pycurl-7.19.5.tar.gz"
-    sha1 "ec36d55a99db9a49fede3bfa27ee16a4f5dc7bef"
+    sha256 "69a0aa7c9dddbfe4cebf4d1f674c490faccf739fc930d85d8990ce2fd0551a43"
   end
 
   resource "urlgrabber" do
     url "https://pypi.python.org/packages/source/u/urlgrabber/urlgrabber-3.9.1.tar.gz"
-    sha1 "3d4e7d38f268a9b652f695a1d87e50aef1a3485c"
+    sha256 "b4e276fa968c66671309a6d754c4b3b0cb2003dec8bca87a681378a22e0d3da7"
   end
 
   resource "ipaddr" do
     url "https://pypi.python.org/packages/source/i/ipaddr/ipaddr-2.1.11.tar.gz"
-    sha1 "f9a16ddb3cf774b8dcf8894c2f4295c4e17d0ed3"
+    sha256 "1b555b8a8800134fdafe32b7d0cb52f5bdbfdd093707c3dd484c5ea59f1d98b7"
   end
 
   patch :DATA # fix shebangs

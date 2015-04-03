@@ -1,7 +1,7 @@
 class GtkVnc < Formula
   homepage "https://wiki.gnome.org/Projects/gtk-vnc"
   url "https://download.gnome.org/sources/gtk-vnc/0.5/gtk-vnc-0.5.4.tar.xz"
-  sha1 "7d7b3bd8459d2daef9b4b4e6adaeb78e879c0aa0"
+  sha256 "488aa97a76ce6868160699cd45d4a0ee0fe6f0ad4631737c6ddd84450f6c9ce7"
 
   depends_on "gobject-introspection" => :build
   depends_on "intltool" => :build
