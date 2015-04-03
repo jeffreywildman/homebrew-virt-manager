@@ -1,7 +1,7 @@
 class LibsoupWithGnome < Formula
-  homepage 'http://live.gnome.org/LibSoup'
-  url 'http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.46/libsoup-2.46.0.tar.xz'
-  sha256 'fa3d5574c1a2df521242e2ca624a2b3057121798cab9f8f40525aa186a7b15a3'
+  homepage "https://live.gnome.org/LibSoup"
+  url "http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.46/libsoup-2.46.0.tar.xz"
+  sha256 "fa3d5574c1a2df521242e2ca624a2b3057121798cab9f8f40525aa186a7b15a3"
 
   bottle do
     revision 1
@@ -10,12 +10,12 @@ class LibsoupWithGnome < Formula
     sha1 "693146c16d4105de3716252f2da9cf35156c0328" => :mountain_lion
   end
 
-  depends_on 'pkg-config' => :build
-  depends_on 'intltool' => :build
-  depends_on 'glib-networking'
-  depends_on 'gnutls'
-  depends_on 'sqlite'
-  depends_on 'gobject-introspection' => :optional
+  depends_on "pkg-config" => :build
+  depends_on "intltool" => :build
+  depends_on "glib-networking"
+  depends_on "gnutls"
+  depends_on "sqlite"
+  depends_on "gobject-introspection" => :optional
 
   def install
     args = [
@@ -33,6 +33,6 @@ class LibsoupWithGnome < Formula
     end
 
     system "./configure", *args
-    system "make install"
+    system "make", "install"
   end
 end
