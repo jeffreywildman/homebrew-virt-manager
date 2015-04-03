@@ -5,22 +5,22 @@ class VirtManager < Formula
 
   depends_on "pkg-config" => :build
   depends_on "intltool" => :build
- 
+
   # TODO: don't rely on homebrewed python
   depends_on :python
   depends_on "pygobject3"
   depends_on "gtk+3"
   depends_on "libvirt-glib"
-  depends_on "libxml2" => "with-python" 
+  depends_on "libxml2" => "with-python"
   depends_on "vte3"
   depends_on "d-bus"
-  depends_on :x11 
+  depends_on :x11
   depends_on "libosinfo"
 
   # TODO: audio
   depends_on "gtk-vnc"
   depends_on "spice-gtk"
-  
+
   depends_on "libvirt"
   depends_on "hicolor-icon-theme"
   depends_on "gnome-icon-theme"
@@ -136,13 +136,13 @@ index 52c4969..caffea3 100644
 --- a/virt-manager.spec
 +++ b/virt-manager.spec
 @@ -144,21 +144,21 @@ python setup.py install -O1 --root=$RPM_BUILD_ROOT
- 
+
  %post
  /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
 -/usr/bin/update-desktop-database &> /dev/null || :
 +/usr/local/bin/update-desktop-database &> /dev/null || :
- 
- 
+
+
  %postun
  if [ $1 -eq 0 ] ; then
      /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null
@@ -153,28 +153,28 @@ index 52c4969..caffea3 100644
  fi
 -/usr/bin/update-desktop-database &> /dev/null || :
 +/usr/local/bin/update-desktop-database &> /dev/null || :
- 
- 
+
+
  %posttrans
 -/usr/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 -/usr/bin/glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
 +/usr/local/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 +/usr/local/bin/glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
- 
- 
+
+
  %files
 diff --git a/virt-manager.spec.in b/virt-manager.spec.in
 index e6991d8..577e5c3 100644
 --- a/virt-manager.spec.in
 +++ b/virt-manager.spec.in
 @@ -144,21 +144,21 @@ python setup.py install -O1 --root=$RPM_BUILD_ROOT
- 
+
  %post
  /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
 -/usr/bin/update-desktop-database &> /dev/null || :
 +/usr/local/bin/update-desktop-database &> /dev/null || :
- 
- 
+
+
  %postun
  if [ $1 -eq 0 ] ; then
      /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null
@@ -185,13 +185,13 @@ index e6991d8..577e5c3 100644
  fi
 -/usr/bin/update-desktop-database &> /dev/null || :
 +/usr/local/bin/update-desktop-database &> /dev/null || :
- 
- 
+
+
  %posttrans
 -/usr/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 -/usr/bin/glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
 +/usr/local/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 +/usr/local/bin/glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
- 
- 
+
+
  %files

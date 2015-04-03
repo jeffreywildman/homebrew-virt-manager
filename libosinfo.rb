@@ -29,7 +29,7 @@ index 01b764d..22f7d15 100755
 +++ b/configure
 @@ -14694,7 +14694,7 @@ case "$host" in
      ;;
- 
+
    *)
 -    NO_UNDEFINED_FLAGS="-Wl,--no-undefined"
 +    NO_UNDEFINED_FLAGS=""

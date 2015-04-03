@@ -34,9 +34,9 @@ index a9a6591..ca83fca 100644
 -			-Wl,--version-script=$(srcdir)/libvirt-gconfig.sym \
  			-version-info $(LIBVIRT_GLIB_VERSION_INFO)
 +#			-Wl,--version-script=$(srcdir)/libvirt-gconfig.sym \
- 
+
  BUILT_SOURCES = $(GCONFIG_GENERATED_FILES)
- 
+
 diff --git a/libvirt-gconfig/Makefile.in b/libvirt-gconfig/Makefile.in
 index 42e4352..67d7fae 100644
 --- a/libvirt-gconfig/Makefile.in
@@ -48,7 +48,7 @@ index 42e4352..67d7fae 100644
 -			-Wl,--version-script=$(srcdir)/libvirt-gconfig.sym \
  			-version-info $(LIBVIRT_GLIB_VERSION_INFO)
 +#			-Wl,--version-script=$(srcdir)/libvirt-gconfig.sym \
- 
+
  BUILT_SOURCES = $(GCONFIG_GENERATED_FILES)
  CLEANFILES = $(BUILT_SOURCES) $(am__append_2)
 diff --git a/libvirt-glib/Makefile.am b/libvirt-glib/Makefile.am
@@ -62,7 +62,7 @@ index a48cfbb..d865a63 100644
 -			-Wl,--version-script=$(srcdir)/libvirt-glib.sym \
  			-version-info $(LIBVIRT_GLIB_VERSION_INFO)
 +#			-Wl,--version-script=$(srcdir)/libvirt-glib.sym \
- 
+
  # .libs/libvirt-glib.so is built by libtool as a side-effect of the Makefile
  # rule for libosvirt-glib.la.  However, checking symbols relies on Linux ELF layout
 diff --git a/libvirt-glib/Makefile.in b/libvirt-glib/Makefile.in
@@ -76,7 +76,7 @@ index 3523684..47c4417 100644
 -			-Wl,--version-script=$(srcdir)/libvirt-glib.sym \
  			-version-info $(LIBVIRT_GLIB_VERSION_INFO)
 +#			-Wl,--version-script=$(srcdir)/libvirt-glib.sym \
- 
+
  INTROSPECTION_GIRS = $(am__append_1)
  CLEANFILES = $(am__append_2)
 diff --git a/libvirt-gobject/Makefile.am b/libvirt-gobject/Makefile.am
@@ -90,7 +90,7 @@ index 7163c7d..8a379b0 100644
 -			-Wl,--version-script=$(srcdir)/libvirt-gobject.sym \
  			-version-info $(LIBVIRT_GLIB_VERSION_INFO)
 +#			-Wl,--version-script=$(srcdir)/libvirt-gobject.sym \
- 
+
  libvirt-gobject-enums.c: $(libvirt_gobject_1_0_la_HEADERS)
  	$(AM_V_GEN)glib-mkenums \
 diff --git a/libvirt-gobject/Makefile.in b/libvirt-gobject/Makefile.in
@@ -104,6 +104,6 @@ index 26e0df6..0ffa15c 100644
 -			-Wl,--version-script=$(srcdir)/libvirt-gobject.sym \
  			-version-info $(LIBVIRT_GLIB_VERSION_INFO)
 +#			-Wl,--version-script=$(srcdir)/libvirt-gobject.sym \
- 
+
  BUILT_SOURCES = $(GOBJECT_GENERATED_FILES)
  CLEANFILES = $(BUILT_SOURCES) $(am__append_2)
