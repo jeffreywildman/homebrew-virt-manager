@@ -12,7 +12,6 @@ class VirtViewer < Formula
 
   # TODO: audio
   depends_on "gtk-vnc"
-  
   depends_on "spice-gtk"
   depends_on "spice-protocol"
 
