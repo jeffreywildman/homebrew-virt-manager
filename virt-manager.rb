@@ -1,7 +1,7 @@
 class VirtManager < Formula
   homepage "https://virt-manager.org/"
-  url "https://virt-manager.org/download/sources/virt-manager/virt-manager-1.1.0.tar.gz"
-  sha256 "ab0906cb15a132f1893f89ac4ca211c6c2c9c2d1860fbc285edbf9451c0f7941"
+  url "https://virt-manager.org/download/sources/virt-manager/virt-manager-1.2.0.tar.gz"
+  sha256 "f8ca4a562a5e4a7795f3fecb5cc07bb32a298c955c9de436a1921f83c5e8a514"
 
   depends_on "pkg-config" => :build
   depends_on "intltool" => :build
@@ -32,8 +32,8 @@ class VirtManager < Formula
 
   # dependency of urlgrabber
   resource "pycurl" do
-    url "https://pypi.python.org/packages/source/p/pycurl/pycurl-7.19.5.tar.gz"
-    sha256 "69a0aa7c9dddbfe4cebf4d1f674c490faccf739fc930d85d8990ce2fd0551a43"
+    url "https://pypi.python.org/packages/source/p/pycurl/pycurl-7.19.5.1.tar.gz"
+    sha256 "6e9770f80459757f73bd71af82fbb29cd398b38388cdf1beab31ea91a331bc6c"
   end
 
   resource "urlgrabber" do
@@ -44,6 +44,11 @@ class VirtManager < Formula
   resource "ipaddr" do
     url "https://pypi.python.org/packages/source/i/ipaddr/ipaddr-2.1.11.tar.gz"
     sha256 "1b555b8a8800134fdafe32b7d0cb52f5bdbfdd093707c3dd484c5ea59f1d98b7"
+  end
+
+  patch do # fix exception when the remote host is not an IP
+    url "https://git.fedorahosted.org/cgit/virt-manager.git/patch/?id=ebcb7c064ca5a3afd2ec3a0c8f59328a7f71b009"
+    sha256 "d82118644a1fc0aa59f912a571c2c5221781c88b4dff5150d053a2584195ffb2"
   end
 
   patch :DATA # fix shebangs
