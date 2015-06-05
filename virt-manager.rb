@@ -1,7 +1,7 @@
 class VirtManager < Formula
   homepage "https://virt-manager.org/"
-  url "https://virt-manager.org/download/sources/virt-manager/virt-manager-1.1.0.tar.gz"
-  sha256 "ab0906cb15a132f1893f89ac4ca211c6c2c9c2d1860fbc285edbf9451c0f7941"
+  url "https://fedorahosted.org/released/virt-manager/virt-manager-1.2.0.tar.gz"
+  sha256 "f8ca4a562a5e4a7795f3fecb5cc07bb32a298c955c9de436a1921f83c5e8a514"
 
   depends_on "pkg-config" => :build
   depends_on "intltool" => :build
@@ -26,8 +26,8 @@ class VirtManager < Formula
   depends_on "gnome-icon-theme"
 
   resource "libvirt-python" do
-    url "https://libvirt.org/sources/python/libvirt-python-1.2.14.tar.gz"
-    sha256 "0dc3c2bd8eeb570921e7c5cc7cfc202795e5ffd63b0f356ae89dbe0575ee0581"
+    url "https://libvirt.org/sources/python/libvirt-python-1.2.16.tar.gz"
+    sha256 "44eddd353d66f24380d90503bf16f3155c08f3d84d9cc4375d3529f312a7d8fe"
   end
 
   # dependency of urlgrabber
