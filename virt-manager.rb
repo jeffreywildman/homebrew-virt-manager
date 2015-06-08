@@ -55,6 +55,10 @@ class VirtManager < Formula
   patch :DATA # fix shebangs
 
   def install
+    # update location of cpu_map.xml
+    # https://github.com/jeffreywildman/homebrew-virt-manager/issues/15
+    inreplace "virtinst/capabilities.py", "/usr/share/libvirt/cpu_map.xml", "#{HOMEBREW_PREFIX}/share/libvirt/cpu_map.xml"
+
     ENV.prepend_create_path "PYTHONPATH", "#{libexec}/vendor/lib/python2.7/site-packages"
     %w[libvirt-python pycurl urlgrabber ipaddr].each do |r|
       resource(r).stage { system "python", *Language::Python.setup_install_args(libexec/"vendor") }
