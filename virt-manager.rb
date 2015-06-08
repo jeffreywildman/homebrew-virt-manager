@@ -26,8 +26,8 @@ class VirtManager < Formula
   depends_on "gnome-icon-theme"
 
   resource "libvirt-python" do
-    url "https://libvirt.org/sources/python/libvirt-python-1.2.15.tar.gz"
-    sha256 "9a6dfbd487d49f887a41aca4bfb1b4e043fd9fbdfc041252cae84023f5c387ba"
+    url "https://libvirt.org/sources/python/libvirt-python-1.2.16.tar.gz"
+    sha256 "44eddd353d66f24380d90503bf16f3155c08f3d84d9cc4375d3529f312a7d8fe"
   end
 
   # dependency of urlgrabber
