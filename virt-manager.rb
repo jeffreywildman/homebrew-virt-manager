@@ -30,15 +30,16 @@ class VirtManager < Formula
     sha256 "44eddd353d66f24380d90503bf16f3155c08f3d84d9cc4375d3529f312a7d8fe"
   end
 
-  # dependency of urlgrabber
+  # dependency of urlgrabber until patch included in urlgrabber release:
+  # http://yum.baseurl.org/gitweb?p=urlgrabber.git;a=commit;h=e879aa8b7dd4f2f47ef6941ba6381a0eeafb5a13
   resource "pycurl" do
     url "https://pypi.python.org/packages/source/p/pycurl/pycurl-7.19.5.1.tar.gz"
     sha256 "6e9770f80459757f73bd71af82fbb29cd398b38388cdf1beab31ea91a331bc6c"
   end
 
   resource "urlgrabber" do
-    url "https://pypi.python.org/packages/source/u/urlgrabber/urlgrabber-3.9.1.tar.gz"
-    sha256 "b4e276fa968c66671309a6d754c4b3b0cb2003dec8bca87a681378a22e0d3da7"
+    url "http://urlgrabber.baseurl.org/download/urlgrabber-3.10.1.tar.gz"
+    sha256 "06b13ff8d527dba3aee04069681b2c09c03117592d5485a80ae4b807cdf33476"
   end
 
   resource "ipaddr" do
