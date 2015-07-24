@@ -1,7 +1,7 @@
 class SpiceGtk < Formula
   homepage "http://www.spice-space.org/home.html"
-  url "http://www.spice-space.org/download/gtk/spice-gtk-0.28.tar.bz2"
-  sha256 "15aeeb63422cb3bfaa2edbf4602ed2025baa4455abfd1677f631245a0d0f81c4"
+  url "http://www.spice-space.org/download/gtk/spice-gtk-0.29.tar.bz2"
+  sha256 "44c7e22713246a2054c3c3b6e0280fd4c1fdbd2c8d33e5eb95bcda4748d5e973"
 
   depends_on "gobject-introspection" => :build
   depends_on "intltool" => :build
