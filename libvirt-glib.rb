@@ -1,7 +1,7 @@
 class LibvirtGlib < Formula
   homepage "https://libvirt.org/"
-  url "https://libvirt.org/sources/glib/libvirt-glib-0.1.9.tar.gz"
-  sha256 "053b36260ea70d740e27fe99ac67d714d23cf93d563c3342fa00593ec185a958"
+  url "https://libvirt.org/sources/glib/libvirt-glib-0.2.2.tar.gz"
+  sha256 "d7be16025231c91ccae43838b7cdb1d55d181856a2a50b0f7b1c5078ad202d9d"
 
   depends_on "pkg-config" => :build
   depends_on "intltool" => :build
