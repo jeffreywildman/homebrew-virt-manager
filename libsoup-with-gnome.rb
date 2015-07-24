@@ -1,7 +1,7 @@
 class LibsoupWithGnome < Formula
   homepage "https://live.gnome.org/LibSoup"
-  url "http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.46/libsoup-2.46.0.tar.xz"
-  sha256 "fa3d5574c1a2df521242e2ca624a2b3057121798cab9f8f40525aa186a7b15a3"
+  url "http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.51/libsoup-2.51.3.tar.xz"
+  sha256 "ba7ef78e7e93cb08805daa1eb3a116914db7a5caf6a9f386817a7431ba5ef949"
 
   bottle do
     revision 1
