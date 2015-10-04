@@ -1,7 +1,7 @@
 class SpiceGtk < Formula
   homepage "http://www.spice-space.org/home.html"
-  url "http://www.spice-space.org/download/gtk/spice-gtk-0.29.tar.bz2"
-  sha256 "44c7e22713246a2054c3c3b6e0280fd4c1fdbd2c8d33e5eb95bcda4748d5e973"
+  url "http://www.spice-space.org/download/gtk/spice-gtk-0.30.tar.bz2"
+  sha256 "e23323fa399efba17b3c18475ef10a29815851be5e7dbedd246b28ee8eb1379c"
 
   depends_on "gobject-introspection" => :build
   depends_on "intltool" => :build
@@ -18,6 +18,7 @@ class SpiceGtk < Formula
   depends_on "pango"
   depends_on "pixman"
   depends_on "usbredir"
+  depends_on "spice-protocol"
   # TODO: audio
 
   def install
