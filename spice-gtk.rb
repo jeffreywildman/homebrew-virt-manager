@@ -15,10 +15,11 @@ class SpiceGtk < Formula
   depends_on "glib"
   depends_on "gtk+3"
   depends_on "jpeg"
+  depends_on "openssl"
   depends_on "pango"
   depends_on "pixman"
-  depends_on "usbredir"
   depends_on "spice-protocol"
+  depends_on "usbredir"
   # TODO: audio
 
   def install
