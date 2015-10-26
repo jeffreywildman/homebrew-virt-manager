@@ -6,8 +6,6 @@ class VirtManager < Formula
   depends_on "pkg-config" => :build
   depends_on "intltool" => :build
 
-  # TODO: don't rely on homebrewed python
-  depends_on :python
   depends_on "pygobject3"
   depends_on "gtk+3"
   depends_on "libvirt-glib"
@@ -59,7 +57,7 @@ class VirtManager < Formula
       resource(r).stage { system "python", *Language::Python.setup_install_args(libexec/"vendor") }
     end
 
-    ENV.prepend_path "PYTHONPATH", "#{HOMEBREW_PREFIX}/opt/libxml2/lib/python2.7/site-packages"
+    ENV.prepend_path "PYTHONPATH", "#{Formula["libxml2"].opt_lib}/python2.7/site-packages"
 
     system "python", "setup.py",
                      "configure",
@@ -92,7 +90,7 @@ index 4bd5ca3..6b4b9e5 100755
 +++ b/virt-clone
 @@ -1,4 +1,4 @@
 -#!/usr/bin/python2 -tt
-+#!/usr/bin/env python2 -tt
++#!/usr/bin/env python -tt
  #
  # Copyright(c) FUJITSU Limited 2007.
  #
@@ -102,7 +100,7 @@ index a7f9a97..2f1ca7a 100755
 +++ b/virt-convert
 @@ -1,4 +1,4 @@
 -#!/usr/bin/python2 -tt
-+#!/usr/bin/env python2 -tt
++#!/usr/bin/env python -tt
  #
  # Copyright 2008, 2013, 2014  Red Hat, Inc.
  # Joey Boggs <jboggs@redhat.com>
@@ -112,7 +110,7 @@ index 45607fb..4f9cf9e 100755
 +++ b/virt-install
 @@ -1,4 +1,4 @@
 -#!/usr/bin/python2 -tt
-+#!/usr/bin/env python2 -tt
++#!/usr/bin/env python -tt
  #
  # Copyright 2005-2014 Red Hat, Inc.
  #
@@ -122,7 +120,7 @@ index d352b90..5fccceb 100755
 +++ b/virt-manager
 @@ -1,4 +1,4 @@
 -#!/usr/bin/python2 -tt
-+#!/usr/bin/env python2 -tt
++#!/usr/bin/env python -tt
  #
  # Copyright (C) 2006, 2014 Red Hat, Inc.
  # Copyright (C) 2006 Daniel P. Berrange <berrange@redhat.com>
@@ -132,7 +130,7 @@ index 4e0848c..eb40bfa 100755
 +++ b/virt-xml
 @@ -1,4 +1,4 @@
 -#!/usr/bin/python2 -tt
-+#!/usr/bin/env python2 -tt
++#!/usr/bin/env python -tt
  #
  # Copyright 2013-2014 Red Hat, Inc.
  # Cole Robinson <crobinso@redhat.com>
