@@ -5,7 +5,7 @@ Updated/new formulae to build `virt-manager` and `virt-viewer` on Mac OSX.
 
 # Usage
 
-    brew tap jeffreywildman/homebrew-virt-manager
+    brew tap philelis/homebrew-virt-manager
     brew install virt-manager virt-viewer
 
 # Notes
