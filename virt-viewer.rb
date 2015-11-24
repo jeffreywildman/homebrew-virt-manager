@@ -19,14 +19,6 @@ class VirtViewer < Formula
   depends_on "hicolor-icon-theme"
   depends_on "shared-mime-info"
 
- if MacOS.version >= :el_capitan
-  # Fixes build on El Capitan
-  # https://trac.macports.org/ticket/48471
-  patch :p0 do
-  url "https://trac.macports.org/raw-attachment/ticket/48471/define_non_standard_clang_macros.patch"
-  sha256 "e727383c9186fdc36f804c69ad550f5cfd2b996e37083be94c0c9aa8fde226ee"
- end
-
   def install
     system "./configure", "--disable-dependency-tracking",
                           "--disable-silent-rules",
