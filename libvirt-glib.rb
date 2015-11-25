@@ -1,4 +1,5 @@
 class LibvirtGlib < Formula
+  desc "Libvirt API for glib-based programs"
   homepage "https://libvirt.org/"
   url "https://libvirt.org/sources/glib/libvirt-glib-0.2.2.tar.gz"
   sha256 "d7be16025231c91ccae43838b7cdb1d55d181856a2a50b0f7b1c5078ad202d9d"
