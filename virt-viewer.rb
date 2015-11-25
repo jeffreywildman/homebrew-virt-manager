@@ -1,6 +1,6 @@
 class VirtViewer < Formula
   homepage "https://virt-manager.org/"
-  url "https://virt-manager.org/download/sources/virt-viewer/virt-viewer-2.0.tar.gz"
+  url "https://fedorahosted.org/released/virt-viewer/virt-viewer-2.0.tar.gz"
   sha256 "e9c583bcb5acdabac6a8a13eff6ce4e093a3050645771628f832e15ce685d437"
 
   depends_on "pkg-config" => :build
