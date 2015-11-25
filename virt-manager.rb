@@ -1,8 +1,8 @@
 class VirtManager < Formula
   desc "App for managing virtual machines"
   homepage "https://virt-manager.org/"
-  url "https://fedorahosted.org/released/virt-manager/virt-manager-1.2.1.tar.gz"
-  sha256 "74bba80e72e5e1b4d84f1d5b7211b874e9c4ae00a0a44149d1721acab38ce6be"
+  url "https://fedorahosted.org/released/virt-manager/virt-manager-1.3.1.tar.gz"
+  sha256 "6644015bd0f5186e0d7231b09c516577678397ebdb66d53fe65a92797a4c0d53"
 
   depends_on "intltool" => :build
   depends_on "pkg-config" => :build
@@ -27,16 +27,9 @@ class VirtManager < Formula
     sha256 "7ffb49fcb64ac06188fc626c853c99361e5965766ab020f8ea66f8fbcfc29684"
   end
 
-  # dependency of urlgrabber until patch included in urlgrabber release:
-  # http://yum.baseurl.org/gitweb?p=urlgrabber.git;a=commit;h=e879aa8b7dd4f2f47ef6941ba6381a0eeafb5a13
-  resource "pycurl" do
-    url "https://pypi.python.org/packages/source/p/pycurl/pycurl-7.19.5.1.tar.gz"
-    sha256 "6e9770f80459757f73bd71af82fbb29cd398b38388cdf1beab31ea91a331bc6c"
-  end
-
-  resource "urlgrabber" do
-    url "http://urlgrabber.baseurl.org/download/urlgrabber-3.10.1.tar.gz"
-    sha256 "06b13ff8d527dba3aee04069681b2c09c03117592d5485a80ae4b807cdf33476"
+  resource "requests" do
+    url "https://pypi.python.org/packages/source/r/requests/requests-2.8.1.tar.gz"
+    sha256 "84fe8d5bf4dcdcc49002446c47a146d17ac10facf00d9086659064ac43b6c25b"
   end
 
   resource "ipaddr" do
@@ -52,7 +45,7 @@ class VirtManager < Formula
     inreplace "virtinst/capabilities.py", "/usr/share/libvirt/cpu_map.xml", "#{HOMEBREW_PREFIX}/share/libvirt/cpu_map.xml"
 
     ENV.prepend_create_path "PYTHONPATH", "#{libexec}/vendor/lib/python2.7/site-packages"
-    %w[libvirt-python pycurl urlgrabber ipaddr].each do |r|
+    %w[libvirt-python requests ipaddr].each do |r|
       resource(r).stage { system "python", *Language::Python.setup_install_args(libexec/"vendor") }
     end
 
@@ -62,6 +55,9 @@ class VirtManager < Formula
                      "configure",
                      "--prefix=#{libexec}"
     system "python", "setup.py",
+                     "--no-user-cfg",
+                     "--no-update-icon-cache",
+                     "--no-compile-schemas",
                      "install",
                      "--prefix=#{libexec}"
 
