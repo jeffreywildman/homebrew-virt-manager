@@ -5,8 +5,8 @@ class SpiceGtk < Formula
 
   depends_on "gobject-introspection" => :build
   depends_on "intltool" => :build
-  depends_on "pkg-config" => :build
   depends_on "libtool" => :build
+  depends_on "pkg-config" => :build
   depends_on "vala" => :build
 
   depends_on "cairo"

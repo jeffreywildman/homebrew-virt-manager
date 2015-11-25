@@ -3,13 +3,13 @@ class Libosinfo < Formula
   url "https://fedorahosted.org/releases/l/i/libosinfo/libosinfo-0.2.12.tar.gz"
   sha256 "fa00ea8ddbca06c0dcc31e8938ac55cb71e71c6e2449687cd2c9e003a9478fed"
 
-  depends_on "pkg-config" => :build
-  depends_on "intltool" => :build
   depends_on "gobject-introspection" => :build
+  depends_on "intltool" => :build
+  depends_on "pkg-config" => :build
 
   depends_on "check"
+  depends_on "libsoup-with-gnome"
   depends_on "libxml2"
-  depends_on "libsoup-with-gnome" => "with-gobject-introspection"
 
   patch :DATA # remove unknown linker option: --no-undefined
 
@@ -18,7 +18,6 @@ class Libosinfo < Formula
                           "--disable-silent-rules",
                           "--enable-introspection",
                           "--prefix=#{prefix}"
-
     system "make", "install"
   end
 end

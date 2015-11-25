@@ -20,7 +20,7 @@ class GtkVnc < Formula
   depends_on "libgpg-error"
   depends_on "pango"
   # TODO: sound
-  #depends_on "pulseaudio"
+  # depends_on "pulseaudio"
 
   def install
     system "./configure", "--disable-dependency-tracking",

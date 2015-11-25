@@ -3,13 +3,13 @@ class LibvirtGlib < Formula
   url "https://libvirt.org/sources/glib/libvirt-glib-0.2.2.tar.gz"
   sha256 "d7be16025231c91ccae43838b7cdb1d55d181856a2a50b0f7b1c5078ad202d9d"
 
-  depends_on "pkg-config" => :build
-  depends_on "intltool" => :build
   depends_on "gobject-introspection" => :build
+  depends_on "intltool" => :build
+  depends_on "pkg-config" => :build
 
   depends_on "glib"
-  depends_on "libxml2"
   depends_on "libvirt"
+  depends_on "libxml2"
 
   patch :DATA # remove unsupported linker option: --version-script
 
@@ -18,7 +18,6 @@ class LibvirtGlib < Formula
                           "--disable-silent-rules",
                           "--enable-introspection",
                           "--prefix=#{prefix}"
-
     system "make", "install"
   end
 end

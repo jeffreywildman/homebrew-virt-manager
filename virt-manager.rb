@@ -3,25 +3,23 @@ class VirtManager < Formula
   url "https://fedorahosted.org/released/virt-manager/virt-manager-1.2.1.tar.gz"
   sha256 "74bba80e72e5e1b4d84f1d5b7211b874e9c4ae00a0a44149d1721acab38ce6be"
 
-  depends_on "pkg-config" => :build
   depends_on "intltool" => :build
+  depends_on "pkg-config" => :build
 
-  depends_on "pygobject3"
+  depends_on "d-bus"
+  depends_on "gnome-icon-theme"
   depends_on "gtk+3"
+  depends_on "gtk-vnc"
+  depends_on "hicolor-icon-theme"
+  depends_on "libosinfo"
+  depends_on "libvirt"
   depends_on "libvirt-glib"
   depends_on "libxml2" => "with-python"
-  depends_on "vte3"
-  depends_on "d-bus"
-  depends_on :x11
-  depends_on "libosinfo"
-
-  # TODO: audio
-  depends_on "gtk-vnc"
+  depends_on "pygobject3"
   depends_on "spice-gtk"
-
-  depends_on "libvirt"
-  depends_on "hicolor-icon-theme"
-  depends_on "gnome-icon-theme"
+  depends_on "vte3"
+  depends_on :x11
+  # TODO: audio
 
   resource "libvirt-python" do
     url "https://libvirt.org/sources/python/libvirt-python-1.2.21.tar.gz"
