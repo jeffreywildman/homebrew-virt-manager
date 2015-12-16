@@ -1,8 +1,8 @@
 class VirtViewer < Formula
   desc "App for virtualized guest interaction"
   homepage "https://virt-manager.org/"
-  url "https://fedorahosted.org/released/virt-viewer/virt-viewer-2.0.tar.gz"
-  sha256 "e9c583bcb5acdabac6a8a13eff6ce4e093a3050645771628f832e15ce685d437"
+  url "https://fedorahosted.org/released/virt-viewer/virt-viewer-3.0.tar.gz"
+  sha256 "6331fd64ef9e999e0943844ddc0f89d35bd91bcc9c8e919f7274500930e97144"
 
   depends_on "intltool" => :build
   depends_on "libtool" => :build
