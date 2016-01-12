@@ -1,8 +1,8 @@
 class VirtManager < Formula
   desc "App for managing virtual machines"
   homepage "https://virt-manager.org/"
-  url "https://fedorahosted.org/released/virt-manager/virt-manager-1.3.1.tar.gz"
-  sha256 "6644015bd0f5186e0d7231b09c516577678397ebdb66d53fe65a92797a4c0d53"
+  url "https://fedorahosted.org/released/virt-manager/virt-manager-1.3.2.tar.gz"
+  sha256 "270c1f631fd029fee5291e83f50d69e261db666aa952c184643bc6cece77fdb3"
 
   depends_on "intltool" => :build
   depends_on "pkg-config" => :build
