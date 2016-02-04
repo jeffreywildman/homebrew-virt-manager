@@ -1,12 +1,13 @@
 class Libosinfo < Formula
   desc "The operating system information database"
   homepage "https://libosinfo.org/"
-  url "https://fedorahosted.org/releases/l/i/libosinfo/libosinfo-0.2.12.tar.gz"
-  sha256 "fa00ea8ddbca06c0dcc31e8938ac55cb71e71c6e2449687cd2c9e003a9478fed"
+  url "https://fedorahosted.org/releases/l/i/libosinfo/libosinfo-0.3.0.tar.gz"
+  sha256 "538a3468792e919edf5364fe102d751353ae600a92ad3a24f024424a182cefbc"
 
   depends_on "gobject-introspection" => :build
   depends_on "intltool" => :build
   depends_on "pkg-config" => :build
+  depends_on "wget" => :build
 
   depends_on "check"
   depends_on "libsoup-with-gnome"
