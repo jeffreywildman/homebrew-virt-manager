@@ -17,8 +17,7 @@ class LibsoupWithGnome < Formula
     system "./configure", "--disable-debug",
                           "--disable-dependency-tracking",
                           "--disable-silent-rules",
-                          "--prefix=#{prefix}",
-                          "--disable-tls-check"
+                          "--prefix=#{prefix}"
     system "make", "install"
   end
 end
