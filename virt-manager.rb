@@ -23,8 +23,8 @@ class VirtManager < Formula
   # TODO: audio
 
   resource "libvirt-python" do
-    url "https://libvirt.org/sources/python/libvirt-python-1.3.3.tar.gz"
-    sha256 "aa68ae788d44ae49ee43be69227f1db2e8c55a2b3499236b715dfbf6090c0e4a"
+    url "https://libvirt.org/sources/python/libvirt-python-1.3.4.tar.gz"
+    sha256 "badd2f51b07d5b03be7c01c45d8f52fea181ba9386ced5b12241ffdcf7e4f7a7"
   end
 
   resource "requests" do
