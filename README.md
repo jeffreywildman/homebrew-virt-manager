@@ -1,7 +1,7 @@
 homebrew-virt-manager
 =====================
 
-A set of [homebrew][homebrew] formulae to build [`virt-manager`][virt-manager] and [`virt-viewer`][virt-viewer] on Mac OSX.
+A set of [homebrew][homebrew] formulae to install [`virt-manager`][virt-manager] and [`virt-viewer`][virt-viewer] on Mac OSX.
 
 ## Usage
 
