@@ -1,8 +1,8 @@
 class VirtManager < Formula
   desc "App for managing virtual machines"
   homepage "https://virt-manager.org/"
-  url "https://fedorahosted.org/released/virt-manager/virt-manager-1.3.2.tar.gz"
-  sha256 "270c1f631fd029fee5291e83f50d69e261db666aa952c184643bc6cece77fdb3"
+  url "https://fedorahosted.org/released/virt-manager/virt-manager-1.4.0.tar.gz"
+  sha256 "bf31a40cc48500cbf87a0e93a5838fc3f6ce4e2fa03f8bce6aa2615625e6caca"
 
   depends_on "intltool" => :build
   depends_on "pkg-config" => :build
@@ -37,7 +37,7 @@ class VirtManager < Formula
     sha256 "1b555b8a8800134fdafe32b7d0cb52f5bdbfdd093707c3dd484c5ea59f1d98b7"
   end
 
-  patch :DATA # fix shebangs
+  patch :DATA # OS X does not conform to PEP 394, python2 symlink missing
 
   def install
     # update location of cpu_map.xml
@@ -84,8 +84,8 @@ index 4bd5ca3..6b4b9e5 100755
 --- a/virt-clone
 +++ b/virt-clone
 @@ -1,4 +1,4 @@
--#!/usr/bin/python2 -tt
-+#!/usr/bin/env python -tt
+-#!/usr/bin/env python2
++#!/usr/bin/env python
  #
  # Copyright(c) FUJITSU Limited 2007.
  #
@@ -94,8 +94,8 @@ index a7f9a97..2f1ca7a 100755
 --- a/virt-convert
 +++ b/virt-convert
 @@ -1,4 +1,4 @@
--#!/usr/bin/python2 -tt
-+#!/usr/bin/env python -tt
+-#!/usr/bin/env python2
++#!/usr/bin/env python
  #
  # Copyright 2008, 2013, 2014  Red Hat, Inc.
  # Joey Boggs <jboggs@redhat.com>
@@ -104,8 +104,8 @@ index 45607fb..4f9cf9e 100755
 --- a/virt-install
 +++ b/virt-install
 @@ -1,4 +1,4 @@
--#!/usr/bin/python2 -tt
-+#!/usr/bin/env python -tt
+-#!/usr/bin/env python2
++#!/usr/bin/env python
  #
  # Copyright 2005-2014 Red Hat, Inc.
  #
@@ -114,8 +114,8 @@ index d352b90..5fccceb 100755
 --- a/virt-manager
 +++ b/virt-manager
 @@ -1,4 +1,4 @@
--#!/usr/bin/python2 -tt
-+#!/usr/bin/env python -tt
+-#!/usr/bin/env python2
++#!/usr/bin/env python
  #
  # Copyright (C) 2006, 2014 Red Hat, Inc.
  # Copyright (C) 2006 Daniel P. Berrange <berrange@redhat.com>
@@ -124,8 +124,8 @@ index 4e0848c..eb40bfa 100755
 --- a/virt-xml
 +++ b/virt-xml
 @@ -1,4 +1,4 @@
--#!/usr/bin/python2 -tt
-+#!/usr/bin/env python -tt
+-#!/usr/bin/env python2
++#!/usr/bin/env python
  #
  # Copyright 2013-2014 Red Hat, Inc.
  # Cole Robinson <crobinso@redhat.com>
