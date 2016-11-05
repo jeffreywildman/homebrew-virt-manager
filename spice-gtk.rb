@@ -1,7 +1,7 @@
 class SpiceGtk < Formula
   desc "GTK client/libraries for SPICE"
-  homepage "http://www.spice-space.org"
-  url "http://www.spice-space.org/download/gtk/spice-gtk-0.31.tar.bz2"
+  homepage "https://www.spice-space.org"
+  url "https://www.spice-space.org/download/gtk/spice-gtk-0.31.tar.bz2"
   sha256 "c72b4d202b1c0b71d6e24ce5caf914d6dddbcf4010d10db9c2d8e73af728c1ca"
 
   depends_on "gobject-introspection" => :build
