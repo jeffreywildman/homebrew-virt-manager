@@ -1,8 +1,8 @@
 class LibvirtGlib < Formula
   desc "Libvirt API for glib-based programs"
   homepage "https://libvirt.org/"
-  url "https://libvirt.org/sources/glib/libvirt-glib-0.2.3.tar.gz"
-  sha256 "c3b11aa34584b3416148b36bb005505e461830c73c9fd2f40143cca3309250dd"
+  url "https://libvirt.org/sources/glib/libvirt-glib-1.0.0.tar.gz"
+  sha256 "ca9158d01cc4d9e0218f94f8c9ee04ae367d8c3b4396daaebca2c4b89a2e8a47"
 
   depends_on "gobject-introspection" => :build
   depends_on "intltool" => :build
