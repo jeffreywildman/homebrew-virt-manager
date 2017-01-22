@@ -23,17 +23,17 @@ class VirtManager < Formula
   # TODO: audio
 
   resource "libvirt-python" do
-    url "https://libvirt.org/sources/python/libvirt-python-2.4.0.tar.gz"
-    sha256 "aa087cca41f50296306baa13366948339b875fd722fc4b92a484484cd881120c"
+    url "https://libvirt.org/sources/python/libvirt-python-3.0.0.tar.gz"
+    sha256 "94a7c1c57a643afad43f9068c70774e1146ed051ecfca0280d5127011c5e44c1"
   end
 
   resource "requests" do
-    url "https://pypi.python.org/packages/source/r/requests/requests-2.9.1.tar.gz"
-    sha256 "c577815dd00f1394203fc44eb979724b098f88264a9ef898ee45b8e5e9cf587f"
+    url "https://pypi.io/packages/source/r/requests/requests-2.12.5.tar.gz"
+    sha256 "d902a54f08d086a7cc6e58c20e2bb225b1ae82c19c35e5925269ee94fb9fce00"
   end
 
   resource "ipaddr" do
-    url "https://pypi.python.org/packages/source/i/ipaddr/ipaddr-2.1.11.tar.gz"
+    url "https://pypi.io/packages/source/i/ipaddr/ipaddr-2.1.11.tar.gz"
     sha256 "1b555b8a8800134fdafe32b7d0cb52f5bdbfdd093707c3dd484c5ea59f1d98b7"
   end
 
