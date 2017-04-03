@@ -10,7 +10,8 @@ class Usbredir < Formula
   depends_on "libusb"
 
   def install
-    system "./configure", "--disable-dependency-tracking",
+    system "./configure", "CFLAGS=-Qunused-arguments",
+                          "--disable-dependency-tracking",
                           "--disable-silent-rules",
                           "--prefix=#{prefix}"
     system "make", "install"
