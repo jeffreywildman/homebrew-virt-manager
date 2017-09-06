@@ -1,8 +1,8 @@
 class VirtManager < Formula
   desc "App for managing virtual machines"
   homepage "https://virt-manager.org/"
-  url "https://virt-manager.org/download/sources/virt-manager/virt-manager-1.4.1.tar.gz"
-  sha256 "e6c549999f14fbda210c07821910bfa35c086542e166f8b00d7c83717e9f3944"
+  url "https://virt-manager.org/download/sources/virt-manager/virt-manager-1.4.2.tar.gz"
+  sha256 "43e440bb099facf59b59c27c2fc4eb2c42ef0d4ed8d67d93c9e3d98538b6d574"
 
   depends_on "intltool" => :build
   depends_on "pkg-config" => :build
@@ -19,17 +19,35 @@ class VirtManager < Formula
   depends_on "pygobject3"
   depends_on "spice-gtk"
   depends_on "vte3"
-  depends_on :x11
-  # TODO: audio
 
   resource "libvirt-python" do
-    url "https://libvirt.org/sources/python/libvirt-python-3.4.0.tar.gz"
-    sha256 "afa77781f518988f164dd5f99d1844034ca807a8e731e07cbae18474d250b511"
+    url "https://libvirt.org/sources/python/libvirt-python-3.7.0.tar.gz"
+    sha256 "1e4a8a8b08ef8f2502088f26ce3aced415d55ef808d8301dfed023f45154c06f"
+  end
+
+  resource "idna" do
+    url "https://pypi.io/packages/source/i/idna/idna-2.6.tar.gz"
+    sha256 "2c6a5de3089009e3da7c5dde64a141dbc8551d5b7f6cf4ed7c2568d0cc520a8f"
+  end
+
+  resource "certifi" do
+    url "https://pypi.io/packages/source/c/certifi/certifi-2017.7.27.1.tar.gz"
+    sha256 "40523d2efb60523e113b44602298f0960e900388cf3bb6043f645cf57ea9e3f5"
+  end
+
+  resource "chardet" do
+    url "https://pypi.io/packages/source/c/chardet/chardet-3.0.4.tar.gz"
+    sha256 "84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae"
+  end
+
+  resource "urllib3" do
+    url "https://pypi.io/packages/source/u/urllib3/urllib3-1.22.tar.gz"
+    sha256 "cc44da8e1145637334317feebd728bd869a35285b93cbb4cca2577da7e62db4f"
   end
 
   resource "requests" do
-    url "https://pypi.io/packages/source/r/requests/requests-2.12.5.tar.gz"
-    sha256 "d902a54f08d086a7cc6e58c20e2bb225b1ae82c19c35e5925269ee94fb9fce00"
+    url "https://pypi.io/packages/source/r/requests/requests-2.18.4.tar.gz"
+    sha256 "9c443e7324ba5b85070c4a818ade28bfabedf16ea10206da1132edaa6dda237e"
   end
 
   resource "ipaddr" do
@@ -37,15 +55,13 @@ class VirtManager < Formula
     sha256 "1b555b8a8800134fdafe32b7d0cb52f5bdbfdd093707c3dd484c5ea59f1d98b7"
   end
 
-  patch :DATA # OS X does not conform to PEP 394, python2 symlink missing
+  # macOS does not conform to PEP 394, python2 symlink missing
+  # virt-manager does not launch on macOS unless --no-fork flag is provided
+  patch :DATA
 
   def install
-    # update location of cpu_map.xml
-    # https://github.com/jeffreywildman/homebrew-virt-manager/issues/15
-    inreplace "virtinst/capabilities.py", "/usr/share/libvirt/cpu_map.xml", "#{HOMEBREW_PREFIX}/share/libvirt/cpu_map.xml"
-
     ENV.prepend_create_path "PYTHONPATH", "#{libexec}/vendor/lib/python2.7/site-packages"
-    %w[libvirt-python requests ipaddr].each do |r|
+    %w[libvirt-python idna certifi chardet urllib3 requests ipaddr].each do |r|
       resource(r).stage { system "python", *Language::Python.setup_install_args(libexec/"vendor") }
     end
 
@@ -129,3 +145,16 @@ index 4e0848c..eb40bfa 100755
  #
  # Copyright 2013-2014 Red Hat, Inc.
  # Cole Robinson <crobinso@redhat.com>
+
+--- a/virt-manager
++++ b/virt-manager
+@@ -156,7 +156,8 @@
+         help="Print debug output to stdout (implies --no-fork)",
+         default=False)
+     parser.add_argument("--no-fork", action="store_true",
+-        help="Don't fork into background on startup")
++        help="Don't fork into background on startup",
++        default=True)
+     parser.add_argument("--no-conn-autostart", action="store_true",
+         dest="skip_autostart", help="Do not autostart connections")
+     parser.add_argument("--spice-disable-auto-usbredir", action="store_true",
