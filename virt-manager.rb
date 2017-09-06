@@ -19,6 +19,7 @@ class VirtManager < Formula
   depends_on "pygobject3"
   depends_on "spice-gtk"
   depends_on "vte3"
+  depends_on :python
 
   resource "libvirt-python" do
     url "https://libvirt.org/sources/python/libvirt-python-3.7.0.tar.gz"
