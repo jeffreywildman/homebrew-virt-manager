@@ -1,4 +1,6 @@
 class VirtManager < Formula
+  include Language::Python::Virtualenv
+
   desc "App for managing virtual machines"
   homepage "https://virt-manager.org/"
   url "https://virt-manager.org/download/sources/virt-manager/virt-manager-1.4.2.tar.gz"
@@ -8,22 +10,22 @@ class VirtManager < Formula
   depends_on "pkg-config" => :build
 
   depends_on "dbus"
-  depends_on "gnome-icon-theme"
+  depends_on "adwaita-icon-theme"
   depends_on "gtk+3"
   depends_on "gtk-vnc"
   depends_on "hicolor-icon-theme"
   depends_on "libosinfo"
   depends_on "libvirt"
   depends_on "libvirt-glib"
-  depends_on "libxml2" => "with-python"
+  depends_on "libxml2"
   depends_on "pygobject3"
   depends_on "spice-gtk"
   depends_on "vte3"
-  depends_on :python
+  depends_on "python" if MacOS.version <= :snow_leopard
 
   resource "libvirt-python" do
-    url "https://libvirt.org/sources/python/libvirt-python-3.7.0.tar.gz"
-    sha256 "1e4a8a8b08ef8f2502088f26ce3aced415d55ef808d8301dfed023f45154c06f"
+    url "https://libvirt.org/sources/python/libvirt-python-4.0.0.tar.gz"
+    sha256 "31983cf6f47c6fc2f3a53edd10e8d0961c9ab27cafc76f274cd06b774f0496a8"
   end
 
   resource "idna" do
@@ -56,30 +58,27 @@ class VirtManager < Formula
     sha256 "1b555b8a8800134fdafe32b7d0cb52f5bdbfdd093707c3dd484c5ea59f1d98b7"
   end
 
-  # macOS does not conform to PEP 394, python2 symlink missing
   # virt-manager does not launch on macOS unless --no-fork flag is provided
   patch :DATA
 
   def install
-    ENV.prepend_create_path "PYTHONPATH", "#{libexec}/vendor/lib/python2.7/site-packages"
-    %w[libvirt-python idna certifi chardet urllib3 requests ipaddr].each do |r|
-      resource(r).stage { system "python", *Language::Python.setup_install_args(libexec/"vendor") }
-    end
+    venv = virtualenv_create(libexec)
+    venv.pip_install resources
 
-    ENV.prepend_path "PYTHONPATH", "#{Formula["libxml2"].opt_lib}/python2.7/site-packages"
-
-    system "python", "setup.py",
+    # recommended venv.pip_install_and_link buildpath does not work due to --single-version-externally-managed
+    system "#{libexec}/bin/python", "setup.py",
                      "configure",
                      "--prefix=#{libexec}"
-    system "python", "setup.py",
+    system "#{libexec}/bin/python", "setup.py",
                      "--no-user-cfg",
                      "--no-update-icon-cache",
                      "--no-compile-schemas",
                      "install",
                      "--prefix=#{libexec}"
 
-    bin.install Dir[libexec/"bin/*"]
-    bin.env_script_all_files(libexec/"bin", :PYTHONPATH => ENV["PYTHONPATH"])
+    # install virt-manager commands with PATH set to Python virtualenv environment
+    bin.install Dir[libexec/"bin/virt-*"]
+    bin.env_script_all_files(libexec/"bin", :PATH => "#{libexec}/bin:$PATH")
 
     # install and link schemas
     share.install Dir[libexec/"share/glib-2.0"]
@@ -94,59 +93,12 @@ class VirtManager < Formula
     # manual icon cache update step
     system "#{Formula["gtk+3"].opt_bin}/gtk3-update-icon-cache", "#{HOMEBREW_PREFIX}/share/icons/hicolor"
   end
+
+  test do
+    system "virt-manager" "--version"
+  end
 end
 __END__
-diff --git a/virt-clone b/virt-clone
-index 4bd5ca3..6b4b9e5 100755
---- a/virt-clone
-+++ b/virt-clone
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python2
-+#!/usr/bin/env python
- #
- # Copyright(c) FUJITSU Limited 2007.
- #
-diff --git a/virt-convert b/virt-convert
-index a7f9a97..2f1ca7a 100755
---- a/virt-convert
-+++ b/virt-convert
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python2
-+#!/usr/bin/env python
- #
- # Copyright 2008, 2013, 2014  Red Hat, Inc.
- # Joey Boggs <jboggs@redhat.com>
-diff --git a/virt-install b/virt-install
-index 45607fb..4f9cf9e 100755
---- a/virt-install
-+++ b/virt-install
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python2
-+#!/usr/bin/env python
- #
- # Copyright 2005-2014 Red Hat, Inc.
- #
-diff --git a/virt-manager b/virt-manager
-index d352b90..5fccceb 100755
---- a/virt-manager
-+++ b/virt-manager
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python2
-+#!/usr/bin/env python
- #
- # Copyright (C) 2006, 2014 Red Hat, Inc.
- # Copyright (C) 2006 Daniel P. Berrange <berrange@redhat.com>
-diff --git a/virt-xml b/virt-xml
-index 4e0848c..eb40bfa 100755
---- a/virt-xml
-+++ b/virt-xml
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python2
-+#!/usr/bin/env python
- #
- # Copyright 2013-2014 Red Hat, Inc.
- # Cole Robinson <crobinso@redhat.com>
-
 --- a/virt-manager
 +++ b/virt-manager
 @@ -156,7 +156,8 @@
