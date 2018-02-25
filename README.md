@@ -14,8 +14,8 @@ A set of [homebrew][homebrew] formulae to install [`virt-manager`][virt-manager]
 
 When connecting to remote URIs, you probably need to override the `libvirt` socket location, see [www.jedi.be][jedi].
 
-    virt-manager -c qemu+ssh://user@libvirthost/system?socket=/var/run/libvirt/libvirt-sock
-    virt-viewer -c qemu+ssh://user@libvirthost/system?socket=/var/run/libvirt/libvirt-sock
+    virt-manager -c 'qemu+ssh://user@libvirthost/system?socket=/var/run/libvirt/libvirt-sock'
+    virt-viewer -c 'qemu+ssh://user@libvirthost/system?socket=/var/run/libvirt/libvirt-sock'
 
 #### I still can't connect to a remote URI, why?
 
