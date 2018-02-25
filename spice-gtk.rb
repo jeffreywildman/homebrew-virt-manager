@@ -4,6 +4,9 @@ class SpiceGtk < Formula
   url "https://www.spice-space.org/download/gtk/spice-gtk-0.34.tar.bz2"
   sha256 "e9720e01165f8451c9f3f58ad50e3afb990993b81cc2db86b3661b7ac5b976ee"
 
+  depends_on "autoconf" => :build
+  depends_on "autogen" => :build
+  depends_on "automake" => :build
   depends_on "gobject-introspection" => :build
   depends_on "intltool" => :build
   depends_on "libtool" => :build
@@ -31,17 +34,12 @@ class SpiceGtk < Formula
   depends_on "gst-plugins-bad"
   depends_on "gst-plugins-ugly"
 
-  # need autogen to regen after patching the build
-  depends_on "autogen"
-  depends_on "automake"
-  depends_on "autoconf"
-
   # compile vncdisplaykeymap.c as objc to fix include issue
   patch :DATA
 
   def install
-    ENV['CFLAGS'] = "-Wno-cast-align -Wno-error"
-    ENV['XML_CATALOG_FILES'] = "/usr/local/etc/xml/catalog"
+    ENV["CFLAGS"] = "-Wno-cast-align -Wno-error"
+    ENV["XML_CATALOG_FILES"] = "/usr/local/etc/xml/catalog"
 
     mv "src/vncdisplaykeymap.c", "src/vncdisplaykeymap.m"
 

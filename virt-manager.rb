@@ -95,7 +95,7 @@ class VirtManager < Formula
   end
 
   test do
-    system "virt-manager" "--version"
+    system "#{bin}/virt-manager", "--version"
   end
 end
 __END__
