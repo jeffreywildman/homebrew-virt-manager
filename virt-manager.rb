@@ -3,8 +3,8 @@ class VirtManager < Formula
 
   desc "App for managing virtual machines"
   homepage "https://virt-manager.org/"
-  url "https://virt-manager.org/download/sources/virt-manager/virt-manager-1.5.0.tar.gz"
-  sha256 "d43a7b99d40acdcb8e9455e7874beee132cfcfce9eed0d6252e8f254a82cadc6"
+  url "https://virt-manager.org/download/sources/virt-manager/virt-manager-1.5.1.tar.gz"
+  sha256 "ee889d59110986391a394077f004f68125e01e216a5e7cfc29adb6ae49ab2dab"
 
   depends_on "intltool" => :build
   depends_on "pkg-config" => :build
@@ -18,14 +18,14 @@ class VirtManager < Formula
   depends_on "libvirt"
   depends_on "libvirt-glib"
   depends_on "libxml2"
-  depends_on "pygobject3"
+  depends_on "pygobject3" => "with-python@2"
   depends_on "spice-gtk"
   depends_on "vte3"
-  depends_on "python" if MacOS.version <= :snow_leopard
+  depends_on "python@2" if MacOS.version <= :snow_leopard
 
   resource "libvirt-python" do
-    url "https://libvirt.org/sources/python/libvirt-python-4.0.0.tar.gz"
-    sha256 "31983cf6f47c6fc2f3a53edd10e8d0961c9ab27cafc76f274cd06b774f0496a8"
+    url "https://libvirt.org/sources/python/libvirt-python-4.1.0.tar.gz"
+    sha256 "dec2a33d68779672b4688b296d6de18c9c41b89d8c74c9d3dc887e366587b8c7"
   end
 
   resource "idna" do
@@ -54,8 +54,8 @@ class VirtManager < Formula
   end
 
   resource "ipaddr" do
-    url "https://pypi.io/packages/source/i/ipaddr/ipaddr-2.1.11.tar.gz"
-    sha256 "1b555b8a8800134fdafe32b7d0cb52f5bdbfdd093707c3dd484c5ea59f1d98b7"
+    url "https://pypi.io/packages/source/i/ipaddr/ipaddr-2.2.0.tar.gz"
+    sha256 "4092dfe667588d16aa12b59acb7c8a4024e5dcb23a681cd0b0b602373eca88d6"
   end
 
   # virt-manager does not launch on macOS unless --no-fork flag is provided
