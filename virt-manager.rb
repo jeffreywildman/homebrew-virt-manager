@@ -24,8 +24,8 @@ class VirtManager < Formula
   depends_on "python@2" if MacOS.version <= :snow_leopard
 
   resource "libvirt-python" do
-    url "https://libvirt.org/sources/python/libvirt-python-4.2.0.tar.gz"
-    sha256 "27705ee0046055b794468015c43861e8281695235d17007952547631cc6912dc"
+    url "https://libvirt.org/sources/python/libvirt-python-4.4.0.tar.gz"
+    sha256 "3142f247a8aecedefd1f9fe4682cf94f5c886cbb6135b3ea4d4c74da425871d5"
   end
 
   resource "idna" do
