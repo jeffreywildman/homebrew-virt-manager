@@ -14,7 +14,7 @@ class VirtViewer < Formula
   depends_on "libvirt"
   depends_on "libvirt-glib"
   depends_on "shared-mime-info"
-  depends_on "spice-gtk"
+  depends_on "spice-gtk@0.34"
   depends_on "spice-protocol"
 
   def install
