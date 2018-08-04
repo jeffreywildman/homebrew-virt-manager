@@ -22,6 +22,7 @@ class VirtManager < Formula
   depends_on "spice-gtk"
   depends_on "vte3"
   depends_on "python@2" if MacOS.version <= :snow_leopard
+  depends_on "py2cairo"
 
   resource "libvirt-python" do
     url "https://libvirt.org/sources/python/libvirt-python-4.5.0.tar.gz"
