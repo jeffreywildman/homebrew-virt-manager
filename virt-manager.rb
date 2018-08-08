@@ -5,12 +5,13 @@ class VirtManager < Formula
   homepage "https://virt-manager.org/"
   url "https://virt-manager.org/download/sources/virt-manager/virt-manager-1.5.1.tar.gz"
   sha256 "ee889d59110986391a394077f004f68125e01e216a5e7cfc29adb6ae49ab2dab"
+  revision 1
 
   depends_on "intltool" => :build
   depends_on "pkg-config" => :build
 
-  depends_on "dbus"
   depends_on "adwaita-icon-theme"
+  depends_on "dbus"
   depends_on "gtk+3"
   depends_on "gtk-vnc"
   depends_on "hicolor-icon-theme"
@@ -18,11 +19,12 @@ class VirtManager < Formula
   depends_on "libvirt"
   depends_on "libvirt-glib"
   depends_on "libxml2"
+  depends_on "osinfo-db"
+  depends_on "py2cairo"
   depends_on "pygobject3" => "with-python@2"
+  depends_on "python@2" if MacOS.version <= :snow_leopard
   depends_on "spice-gtk"
   depends_on "vte3"
-  depends_on "python@2" if MacOS.version <= :snow_leopard
-  depends_on "py2cairo"
 
   resource "libvirt-python" do
     url "https://libvirt.org/sources/python/libvirt-python-4.5.0.tar.gz"
