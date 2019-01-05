@@ -7,6 +7,7 @@ A set of [homebrew][homebrew] formulae to install [`virt-manager`][virt-manager]
 
     brew tap jeffreywildman/homebrew-virt-manager
     brew install virt-manager virt-viewer
+    virt-manager -c test:///default
 
 ## FAQs
 

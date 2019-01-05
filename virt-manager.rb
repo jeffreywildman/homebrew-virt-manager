@@ -3,15 +3,13 @@ class VirtManager < Formula
 
   desc "App for managing virtual machines"
   homepage "https://virt-manager.org/"
-  url "https://virt-manager.org/download/sources/virt-manager/virt-manager-1.5.1.tar.gz"
-  sha256 "ee889d59110986391a394077f004f68125e01e216a5e7cfc29adb6ae49ab2dab"
-  revision 5
+  url "https://virt-manager.org/download/sources/virt-manager/virt-manager-2.0.0.tar.gz"
+  sha256 "eb6fa4d7b7d539fb006d0822760a5e97ddf99b1f131806d08eaea6d4f3ea88ac"
 
   depends_on "intltool" => :build
   depends_on "pkg-config" => :build
 
   depends_on "adwaita-icon-theme"
-  depends_on "dbus"
   depends_on "gtk+3"
   depends_on "gtk-vnc"
   depends_on "hicolor-icon-theme"
@@ -20,9 +18,9 @@ class VirtManager < Formula
   depends_on "libvirt-glib"
   depends_on "libxml2"
   depends_on "osinfo-db"
-  depends_on "py2cairo"
-  depends_on "pygobject3" => "with-python@2"
-  depends_on "python@2" if MacOS.version <= :snow_leopard
+  depends_on "py3cairo"
+  depends_on "pygobject3"
+  depends_on "python"
   depends_on "spice-gtk"
   depends_on "vte3"
 
@@ -32,8 +30,8 @@ class VirtManager < Formula
   end
 
   resource "idna" do
-    url "https://pypi.io/packages/source/i/idna/idna-2.7.tar.gz"
-    sha256 "684a38a6f903c1d71d6d5fac066b58d7768af4de2b832e426ec79c30daa94a16"
+    url "https://pypi.io/packages/source/i/idna/idna-2.8.tar.gz"
+    sha256 "c357b3f628cf53ae2c4c05627ecc484553142ca23264e593d327bcde5e9c3407"
   end
 
   resource "certifi" do
@@ -52,23 +50,18 @@ class VirtManager < Formula
   end
 
   resource "requests" do
-    url "https://pypi.io/packages/source/r/requests/requests-2.20.1.tar.gz"
-    sha256 "ea881206e59f41dbd0bd445437d792e43906703fff75ca8ff43ccdb11f33f263"
+    url "https://pypi.io/packages/source/r/requests/requests-2.21.0.tar.gz"
+    sha256 "502a824f31acdacb3a35b6690b5fbf0bc41d63a24a45c4004352b0242707598e"
   end
 
-  resource "ipaddr" do
-    url "https://pypi.io/packages/source/i/ipaddr/ipaddr-2.2.0.tar.gz"
-    sha256 "4092dfe667588d16aa12b59acb7c8a4024e5dcb23a681cd0b0b602373eca88d6"
-  end
-
-  # virt-manager does not launch on macOS unless --no-fork flag is provided
+  # virt-manager doesn't prompt for password on macOS unless --no-fork flag is provided
   patch :DATA
 
   def install
-    venv = virtualenv_create(libexec)
+    venv = virtualenv_create(libexec, "python3")
     venv.pip_install resources
 
-    # recommended venv.pip_install_and_link buildpath does not work due to --single-version-externally-managed
+    # virt-manager uses distutils, doesn't like --single-version-externally-managed
     system "#{libexec}/bin/python", "setup.py",
                      "configure",
                      "--prefix=#{libexec}"
@@ -76,17 +69,14 @@ class VirtManager < Formula
                      "--no-user-cfg",
                      "--no-update-icon-cache",
                      "--no-compile-schemas",
-                     "install",
-                     "--prefix=#{libexec}"
+                     "install"
 
     # install virt-manager commands with PATH set to Python virtualenv environment
     bin.install Dir[libexec/"bin/virt-*"]
     bin.env_script_all_files(libexec/"bin", :PATH => "#{libexec}/bin:$PATH")
 
-    # install and link schemas
+    share.install Dir[libexec/"share/man"]
     share.install Dir[libexec/"share/glib-2.0"]
-
-    # install and link icons
     share.install Dir[libexec/"share/icons"]
   end
 
@@ -102,15 +92,17 @@ class VirtManager < Formula
   end
 end
 __END__
+diff --git a/virt-manager b/virt-manager
+index 15d5109..8ee305a 100755
 --- a/virt-manager
 +++ b/virt-manager
-@@ -156,7 +156,8 @@
+@@ -151,7 +151,8 @@ def parse_commandline():
          help="Print debug output to stdout (implies --no-fork)",
          default=False)
      parser.add_argument("--no-fork", action="store_true",
 -        help="Don't fork into background on startup")
 +        help="Don't fork into background on startup",
 +        default=True)
-     parser.add_argument("--no-conn-autostart", action="store_true",
-         dest="skip_autostart", help="Do not autostart connections")
-     parser.add_argument("--spice-disable-auto-usbredir", action="store_true",
+
+     parser.add_argument("--show-domain-creator", action="store_true",
+         help="Show 'New VM' wizard")
