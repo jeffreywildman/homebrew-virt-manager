@@ -5,6 +5,7 @@ class VirtManager < Formula
   homepage "https://virt-manager.org/"
   url "https://virt-manager.org/download/sources/virt-manager/virt-manager-2.0.0.tar.gz"
   sha256 "eb6fa4d7b7d539fb006d0822760a5e97ddf99b1f131806d08eaea6d4f3ea88ac"
+  revision 1
 
   depends_on "intltool" => :build
   depends_on "pkg-config" => :build
@@ -16,7 +17,7 @@ class VirtManager < Formula
   depends_on "libosinfo"
   depends_on "libvirt"
   depends_on "libvirt-glib"
-  depends_on "libxml2"
+  depends_on "libxml2" # need python3 bindings
   depends_on "osinfo-db"
   depends_on "py3cairo"
   depends_on "pygobject3"
