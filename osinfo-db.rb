@@ -1,8 +1,8 @@
 class OsinfoDb < Formula
   desc "Libosinfo database files"
   homepage "https://libosinfo.org/"
-  url "https://releases.pagure.org/libosinfo/osinfo-db-20181214.tar.xz"
-  sha256 "8dc1e980c8e1d8c043c22c63b7db20e7b4b34a73dbe98b9d31536eb83929d5a3"
+  url "https://releases.pagure.org/libosinfo/osinfo-db-20190120.tar.xz"
+  sha256 "c14c891b6f1a9075506cb72eabdab0358aafaf5deb41e5ee09deb1481fa8612e"
 
   depends_on "osinfo-db-tools" => :build
 
@@ -14,6 +14,6 @@ class OsinfoDb < Formula
   end
 
   test do
-    system "#{bin}/osinfo-db-validate", "--local"
+    system "osinfo-db-validate", "--local"
   end
 end
