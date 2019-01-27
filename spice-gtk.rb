@@ -1,9 +1,8 @@
 class SpiceGtk < Formula
   desc "GTK client/libraries for SPICE"
   homepage "https://www.spice-space.org"
-  url "https://www.spice-space.org/download/gtk/spice-gtk-0.35.tar.bz2"
-  sha256 "b4e6073de5125e2bdecdf1fbe7c9e8c4cabe9c85518889b42f72bf63c8ab9e86"
-  revision 1
+  url "https://www.spice-space.org/download/gtk/spice-gtk-0.36.tar.bz2"
+  sha256 "7126c3584df12d40dcf4970f5f46fafd65b757620f911687e549f7da5c8fd7cd"
 
   depends_on "autoconf" => :build
   depends_on "autogen" => :build
@@ -27,6 +26,7 @@ class SpiceGtk < Formula
   depends_on "gstreamer"
   depends_on "gtk+3"
   depends_on "jpeg"
+  depends_on "json-glib"
   depends_on "libusb"
   depends_on "lz4"
   depends_on "openssl"
