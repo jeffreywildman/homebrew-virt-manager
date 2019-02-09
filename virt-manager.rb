@@ -3,9 +3,8 @@ class VirtManager < Formula
 
   desc "App for managing virtual machines"
   homepage "https://virt-manager.org/"
-  url "https://virt-manager.org/download/sources/virt-manager/virt-manager-2.0.0.tar.gz"
-  sha256 "eb6fa4d7b7d539fb006d0822760a5e97ddf99b1f131806d08eaea6d4f3ea88ac"
-  revision 1
+  url "https://virt-manager.org/download/sources/virt-manager/virt-manager-2.1.0.tar.gz"
+  sha256 "34ea069a6565f1f1860a0741e5a5029e8b45c779e81f16d27fb4d767fd4403d4"
 
   depends_on "intltool" => :build
   depends_on "pkg-config" => :build
@@ -26,8 +25,8 @@ class VirtManager < Formula
   depends_on "vte3"
 
   resource "libvirt-python" do
-    url "https://libvirt.org/sources/python/libvirt-python-4.10.0.tar.gz"
-    sha256 "6949fa09d5e3a2a03438c1334c2ed441f502222c7f21e654620f466593bcd185"
+    url "https://libvirt.org/sources/python/libvirt-python-5.0.0.tar.gz"
+    sha256 "47605ccc3996aa0833919dc8e9bbde98b10968c5a8d37f7ca55c6a29894e8abf"
   end
 
   resource "idna" do
