@@ -1,8 +1,8 @@
 class SpiceGtk < Formula
   desc "GTK client/libraries for SPICE"
   homepage "https://www.spice-space.org"
-  url "https://www.spice-space.org/download/gtk/spice-gtk-0.36.tar.bz2"
-  sha256 "7126c3584df12d40dcf4970f5f46fafd65b757620f911687e549f7da5c8fd7cd"
+  url "https://www.spice-space.org/download/gtk/spice-gtk-0.37.tar.bz2"
+  sha256 "1f28b706472ad391cda79a93fd7b4c7a03e84b88fc46ddb35dddbe323c923bb7"
 
   depends_on "autoconf" => :build
   depends_on "autogen" => :build
@@ -36,11 +36,13 @@ class SpiceGtk < Formula
   depends_on "spice-protocol"
   depends_on "usbredir"
 
-  def install
-    # Some files (vncdisplaykeymap.c) require building as Objective-C
-    # https://www.mail-archive.com/spice-devel@lists.freedesktop.org/msg40085.html
-    ENV["CFLAGS"] = "-ObjC -g -O2"
+  # Upstream patch: https://gitlab.freedesktop.org/spice/spice-gtk/issues/88
+  patch do
+    url "https://gitlab.freedesktop.org/spice/spice-gtk/commit/3c9b37bfc7c88969dfe16b8bfd874745e0fceb8a.diff"
+    sha256 "c2bb9c6dc0d07f333d10077987386680818296f1deb3b796ea7e35453aba7d91"
+  end
 
+  def install
     args = %W[
       --disable-dependency-tracking
       --disable-silent-rules
@@ -54,6 +56,7 @@ class SpiceGtk < Formula
       --with-lz4
       --prefix=#{prefix}
     ]
+    system "autoreconf"
     system "./configure", *args
     system "make", "install"
   end
@@ -67,14 +70,14 @@ class SpiceGtk < Formula
       }
     EOS
     system ENV.cc, "test.cpp",
-                   "-I#{Formula["spice-protocol"].include}/spice-1",
+                   "-I#{Formula["atk"].include}/atk-1.0",
+                   "-I#{Formula["cairo"].include}/cairo",
+                   "-I#{Formula["gdk-pixbuf"].include}/gdk-pixbuf-2.0",
                    "-I#{Formula["glib"].include}/glib-2.0",
                    "-I#{Formula["glib"].lib}/glib-2.0/include",
-                   "-I#{Formula["atk"].include}/atk-1.0",
-                   "-I#{Formula["gdk-pixbuf"].include}/gdk-pixbuf-2.0",
-                   "-I#{Formula["cairo"].include}/cairo",
-                   "-I#{Formula["pango"].include}/pango-1.0",
                    "-I#{Formula["gtk+3"].include}/gtk-3.0",
+                   "-I#{Formula["pango"].include}/pango-1.0",
+                   "-I#{Formula["spice-protocol"].include}/spice-1",
                    "-I#{include}/spice-client-glib-2.0",
                    "-I#{include}/spice-client-gtk-3.0",
                    "-L#{lib}",
