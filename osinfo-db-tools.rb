@@ -1,8 +1,8 @@
 class OsinfoDbTools < Formula
   desc "Tools for managing the libosinfo database files"
   homepage "https://libosinfo.org"
-  url "https://releases.pagure.org/libosinfo/osinfo-db-tools-1.4.0.tar.gz"
-  sha256 "7ee0125c6b99b5b9e10d9bf5951ecc8a170278499a778e6be5c61ef10296f723"
+  url "https://releases.pagure.org/libosinfo/osinfo-db-tools-1.5.0.tar.gz"
+  sha256 "f43160f3f3251849f8b8b37c84ad8640f2a51937d8ea38626f14aa2a159730de"
 
   depends_on "pkg-config" => :build
 
@@ -12,6 +12,9 @@ class OsinfoDbTools < Formula
   depends_on "libarchive" # need >= 3.0.0
 
   def install
+    # sh lives at /bin/sh on macOS, not /usr/bin/sh
+    inreplace "build-aux/install-sh", "#!/usr/bin/sh", "#!/bin/sh"
+
     args = %W[
       --disable-dependency-tracking
       --disable-silent-rules
