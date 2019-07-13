@@ -5,6 +5,7 @@ class VirtManager < Formula
   homepage "https://virt-manager.org/"
   url "https://virt-manager.org/download/sources/virt-manager/virt-manager-2.2.0.tar.gz"
   sha256 "e94b983de10371ca366828d8ae8d2cfb0d5aa8678eccc8476e7c542c9d600605"
+  revision 1
 
   depends_on "intltool" => :build
   depends_on "pkg-config" => :build
