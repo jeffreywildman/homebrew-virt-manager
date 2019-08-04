@@ -1,8 +1,8 @@
 class OsinfoDb < Formula
   desc "Libosinfo database files"
   homepage "https://libosinfo.org/"
-  url "https://releases.pagure.org/libosinfo/osinfo-db-20190611.tar.xz"
-  sha256 "d0103bfe26d9c6ac047588848532d751cbfbb4d3c1f88532cd84b2c8fc6cf301"
+  url "https://releases.pagure.org/libosinfo/osinfo-db-20190726.tar.xz"
+  sha256 "39c70aebeab302cabbffef56f7db60accda22b0a27ce8d17324311311ec28d4d"
 
   depends_on "osinfo-db-tools" => :build
 
