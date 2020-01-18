@@ -5,7 +5,7 @@ class VirtManager < Formula
   homepage "https://virt-manager.org/"
   url "https://virt-manager.org/download/sources/virt-manager/virt-manager-2.2.1.tar.gz"
   sha256 "cfd88d66e834513e067b4d3501217e21352fadb673103bacb9e646da9f029a1b"
-  revision 2
+  revision 3
 
   depends_on "intltool" => :build
   depends_on "pkg-config" => :build
@@ -27,8 +27,8 @@ class VirtManager < Formula
   depends_on "vte3"
 
   resource "libvirt-python" do
-    url "https://libvirt.org/sources/python/libvirt-python-5.8.0.tar.gz"
-    sha256 "4617fa535364a155425dc99f639b3a0fe9f703eb36feb56b3917b5443a1ddf4f"
+    url "https://libvirt.org/sources/python/libvirt-python-5.10.0.tar.gz"
+    sha256 "d204700b3421c8decdcd73c6d12980423c3d6171fc1437ba49470c2c60ebb45a"
   end
 
   resource "idna" do
@@ -37,8 +37,8 @@ class VirtManager < Formula
   end
 
   resource "certifi" do
-    url "https://pypi.io/packages/source/c/certifi/certifi-2019.6.16.tar.gz"
-    sha256 "945e3ba63a0b9f577b1395204e13c3a231f9bc0223888be653286534e5873695"
+    url "https://pypi.io/packages/source/c/certifi/certifi-2019.11.28.tar.gz"
+    sha256 "25b64c7da4cd7479594d035c08c2d809eb4aab3a26e5a990ea98cc450c320f1f"
   end
 
   resource "chardet" do
@@ -47,8 +47,8 @@ class VirtManager < Formula
   end
 
   resource "urllib3" do
-    url "https://pypi.io/packages/source/u/urllib3/urllib3-1.25.3.tar.gz"
-    sha256 "dbe59173209418ae49d485b87d1681aefa36252ee85884c31346debd19463232"
+    url "https://pypi.io/packages/source/u/urllib3/urllib3-1.25.7.tar.gz"
+    sha256 "f3c5fd51747d450d4dcf6f923c81f78f811aab8205fda64b0aba34a4e48b0745"
   end
 
   resource "requests" do
