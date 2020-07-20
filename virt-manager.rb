@@ -3,57 +3,61 @@ class VirtManager < Formula
 
   desc "App for managing virtual machines"
   homepage "https://virt-manager.org/"
-  url "https://virt-manager.org/download/sources/virt-manager/virt-manager-2.2.1.tar.gz"
-  sha256 "cfd88d66e834513e067b4d3501217e21352fadb673103bacb9e646da9f029a1b"
-  revision 3
+  url "https://releases.pagure.org/virt-manager/virt-manager-3.2.0.tar.gz"
+  sha256 "2b6fe3d90d89e1130227e4b05c51e6642d89c839d3ea063e0e29475fd9bf7b86"
 
-  depends_on "intltool" => :build
-  depends_on "pkg-config" => :build
+  depends_on "docutils" => :build
+  depends_on "gettext" => :build
 
-  depends_on "adwaita-icon-theme"
   depends_on "gtk+3"
   depends_on "gtk-vnc"
   depends_on "gtksourceview4"
-  depends_on "hicolor-icon-theme"
   depends_on "libosinfo"
-  depends_on "libvirt"
   depends_on "libvirt-glib"
   depends_on "libxml2" # need python3 bindings
   depends_on "osinfo-db"
-  depends_on "py3cairo"
-  depends_on "pygobject3"
   depends_on "python"
   depends_on "spice-gtk"
   depends_on "vte3"
 
-  resource "libvirt-python" do
-    url "https://libvirt.org/sources/python/libvirt-python-6.10.0.tar.gz"
-    sha256 "47a8e90d9f49bc0296d2817f6009e18dbb69844ce10b81c2a2672bccd6f49fd5"
-  end
-
-  resource "idna" do
-    url "https://pypi.io/packages/source/i/idna/idna-2.8.tar.gz"
-    sha256 "c357b3f628cf53ae2c4c05627ecc484553142ca23264e593d327bcde5e9c3407"
-  end
-
   resource "certifi" do
-    url "https://pypi.io/packages/source/c/certifi/certifi-2019.11.28.tar.gz"
-    sha256 "25b64c7da4cd7479594d035c08c2d809eb4aab3a26e5a990ea98cc450c320f1f"
+    url "https://files.pythonhosted.org/packages/06/a9/cd1fd8ee13f73a4d4f491ee219deeeae20afefa914dfb4c130cfc9dc397a/certifi-2020.12.5.tar.gz"
+    sha256 "1a4995114262bffbc2413b159f2a1a480c969de6e6eb13ee966d470af86af59c"
   end
 
   resource "chardet" do
-    url "https://pypi.io/packages/source/c/chardet/chardet-3.0.4.tar.gz"
-    sha256 "84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae"
+    url "https://files.pythonhosted.org/packages/ee/2d/9cdc2b527e127b4c9db64b86647d567985940ac3698eeabc7ffaccb4ea61/chardet-4.0.0.tar.gz"
+    sha256 "0d6f53a15db4120f2b08c94f11e7d93d2c911ee118b6b30a04ec3ee8310179fa"
   end
 
-  resource "urllib3" do
-    url "https://pypi.io/packages/source/u/urllib3/urllib3-1.25.7.tar.gz"
-    sha256 "f3c5fd51747d450d4dcf6f923c81f78f811aab8205fda64b0aba34a4e48b0745"
+  resource "idna" do
+    url "https://files.pythonhosted.org/packages/ea/b7/e0e3c1c467636186c39925827be42f16fee389dc404ac29e930e9136be70/idna-2.10.tar.gz"
+    sha256 "b307872f855b18632ce0c21c5e45be78c0ea7ae4c15c828c20788b26921eb3f6"
+  end
+
+  resource "libvirt-python" do
+    url "https://files.pythonhosted.org/packages/ee/32/f8f89f58e86ffd0d384d1864bbcefc1894efe5132dbc050489bd7555a6d6/libvirt-python-7.0.0.tar.gz"
+    sha256 "7e1663da2587e87106fc226160b33ae2160989c32176ad17d876315d5c1c36b5"
+  end
+
+  resource "pycairo" do
+    url "https://files.pythonhosted.org/packages/9d/6e/499d6a6db416eb3cdf0e57762a269908e4ab6638a75a90972afc34885b91/pycairo-1.20.0.tar.gz"
+    sha256 "5695a10cb7f9ae0d01f665b56602a845b0a8cb17e2123bfece10c2e58552468c"
+  end
+
+  resource "pygobject" do
+    url "https://files.pythonhosted.org/packages/3a/a7/de282a4aaedba59d60a895a7821e6497b39cbdfa94a352776ff45ffc6e6f/PyGObject-3.38.0.tar.gz"
+    sha256 "051b950f509f2e9f125add96c1493bde987c527f7a0c15a1f7b69d6d1c3cd8e6"
   end
 
   resource "requests" do
-    url "https://pypi.io/packages/source/r/requests/requests-2.22.0.tar.gz"
-    sha256 "11e007a8a2aa0323f5a921e9e6a2d7e4e67d9877e85773fba9ba6419025cbeb4"
+    url "https://files.pythonhosted.org/packages/6b/47/c14abc08432ab22dc18b9892252efaf005ab44066de871e72a38d6af464b/requests-2.25.1.tar.gz"
+    sha256 "27973dd4a904a4f13b263a19c866c13b92a39ed1c964655f025f3f8d3d75b804"
+  end
+
+  resource "urllib3" do
+    url "https://files.pythonhosted.org/packages/d7/8d/7ee68c6b48e1ec8d41198f694ecdc15f7596356f2ff8e6b1420300cf5db3/urllib3-1.26.3.tar.gz"
+    sha256 "de3eedaad74a2683334e282005cd8d7f22f4d55fa690a2a1020a416cb0a47e73"
   end
 
   # virt-manager doesn't prompt for password on macOS unless --no-fork flag is provided
@@ -94,17 +98,16 @@ class VirtManager < Formula
   end
 end
 __END__
-diff --git a/virt-manager b/virt-manager
-index 15d5109..8ee305a 100755
---- a/virt-manager
-+++ b/virt-manager
-@@ -151,7 +151,8 @@ def parse_commandline():
+diff --git a/virtManager/virtmanager.py b/virtManager/virtmanager.py
+index f6d538b..3e78d3c 100755
+--- a/virtManager/virtmanager.py
++++ b/virtManager/virtmanager.py
+@@ -136,7 +136,7 @@ def parse_commandline():
+     parser.add_argument("--debug", action="store_true",
          help="Print debug output to stdout (implies --no-fork)",
          default=False)
-     parser.add_argument("--no-fork", action="store_true",
--        help="Don't fork into background on startup")
-+        help="Don't fork into background on startup",
-+        default=True)
+-    parser.add_argument("--no-fork", action="store_true",
++    parser.add_argument("--fork", dest='no_fork', action="store_false",
+         help="Don't fork into background on startup")
 
      parser.add_argument("--show-domain-creator", action="store_true",
-         help="Show 'New VM' wizard")
