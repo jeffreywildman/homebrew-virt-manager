@@ -27,8 +27,8 @@ class VirtManager < Formula
   depends_on "vte3"
 
   resource "libvirt-python" do
-    url "https://libvirt.org/sources/python/libvirt-python-5.10.0.tar.gz"
-    sha256 "d204700b3421c8decdcd73c6d12980423c3d6171fc1437ba49470c2c60ebb45a"
+xˇ    url "https://libvirt.org/sources/python/libvirt-python-6.10.0.tar.gz"
+    sha256 "47a8e90d9f49bc0296d2817f6009e18dbb69844ce10b81c2a2672bccd6f49fd5"
   end
 
   resource "idna" do
