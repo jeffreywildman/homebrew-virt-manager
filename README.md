@@ -18,6 +18,8 @@ When connecting to remote URIs, you probably need to override the `libvirt` sock
     virt-manager -c 'qemu+ssh://user@libvirthost/system?socket=/var/run/libvirt/libvirt-sock'
     virt-viewer -c 'qemu+ssh://user@libvirthost/system?socket=/var/run/libvirt/libvirt-sock'
 
+If you're using libvirt >= 6.9.0 on both the client and the server, remote connections should work out of the box, without needing to add the `socket` connection argument.
+
 #### I still can't connect to a remote URI, why?
 
 This formula for `virt-manager` does not include the `openssh-askpass` dependency and does not prompt for passwords in a popup window. Here are two workarounds:
