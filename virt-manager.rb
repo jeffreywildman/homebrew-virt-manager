@@ -36,8 +36,8 @@ class VirtManager < Formula
   end
 
   resource "libvirt-python" do
-    url "https://files.pythonhosted.org/packages/ee/32/f8f89f58e86ffd0d384d1864bbcefc1894efe5132dbc050489bd7555a6d6/libvirt-python-7.0.0.tar.gz"
-    sha256 "7e1663da2587e87106fc226160b33ae2160989c32176ad17d876315d5c1c36b5"
+    url "https://libvirt.org/sources/python/libvirt-python-7.1.0.tar.gz"	
+	  sha256 "faafd31e407f9cb750a73349c007651ca8954ebd455e55b0a20e96de81c50037"
   end
 
   resource "pycairo" do
