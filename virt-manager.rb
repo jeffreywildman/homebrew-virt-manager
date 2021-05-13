@@ -5,6 +5,7 @@ class VirtManager < Formula
   homepage "https://virt-manager.org/"
   url "https://releases.pagure.org/virt-manager/virt-manager-3.2.0.tar.gz"
   sha256 "2b6fe3d90d89e1130227e4b05c51e6642d89c839d3ea063e0e29475fd9bf7b86"
+  revision 1
 
   depends_on "docutils" => :build
   depends_on "gettext" => :build
@@ -36,8 +37,8 @@ class VirtManager < Formula
   end
 
   resource "libvirt-python" do
-    url "https://libvirt.org/sources/python/libvirt-python-7.1.0.tar.gz"	
-	  sha256 "faafd31e407f9cb750a73349c007651ca8954ebd455e55b0a20e96de81c50037"
+    url "https://files.pythonhosted.org/packages/55/1a/c3862f108a8591c18c54419fe5a0ee1a7ac8652029fa3c2ffc2352c5c9f8/libvirt-python-7.3.0.tar.gz"
+    sha256 "676c260ddb365120404e611a38c514045ef1af1a7fede15c1fc02d0f8241f696"
   end
 
   resource "pycairo" do
@@ -45,9 +46,9 @@ class VirtManager < Formula
     sha256 "5695a10cb7f9ae0d01f665b56602a845b0a8cb17e2123bfece10c2e58552468c"
   end
 
-  resource "pygobject" do
-    url "https://files.pythonhosted.org/packages/3a/a7/de282a4aaedba59d60a895a7821e6497b39cbdfa94a352776ff45ffc6e6f/PyGObject-3.38.0.tar.gz"
-    sha256 "051b950f509f2e9f125add96c1493bde987c527f7a0c15a1f7b69d6d1c3cd8e6"
+  resource "PyGObject" do
+    url "https://files.pythonhosted.org/packages/51/2f/4d5d5afb7000b9151e33952b59163c9389bd867ac6fe85d62f85831fa061/PyGObject-3.40.1.tar.gz"
+    sha256 "6fb599aa59ceb9dd05fafb0d72b3862943e7d5e85c8ef6c74856bc6d4321cbab"
   end
 
   resource "requests" do
@@ -56,8 +57,8 @@ class VirtManager < Formula
   end
 
   resource "urllib3" do
-    url "https://files.pythonhosted.org/packages/d7/8d/7ee68c6b48e1ec8d41198f694ecdc15f7596356f2ff8e6b1420300cf5db3/urllib3-1.26.3.tar.gz"
-    sha256 "de3eedaad74a2683334e282005cd8d7f22f4d55fa690a2a1020a416cb0a47e73"
+    url "https://files.pythonhosted.org/packages/cb/cf/871177f1fc795c6c10787bc0e1f27bb6cf7b81dbde399fd35860472cecbc/urllib3-1.26.4.tar.gz"
+    sha256 "e7b021f7241115872f92f43c6508082facffbd1c048e3c6e2bb9c2a157e28937"
   end
 
   # virt-manager doesn't prompt for password on macOS unless --no-fork flag is provided
