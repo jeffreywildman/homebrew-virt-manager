@@ -3,6 +3,7 @@ class OsinfoDbTools < Formula
   homepage "https://libosinfo.org"
   url "https://releases.pagure.org/libosinfo/osinfo-db-tools-1.9.0.tar.xz"
   sha256 "255f1c878bacec70c3020ff5a9cb0f6bd861ca0009f24608df5ef6f62d5243c0"
+  revision 1
 
   depends_on "meson" => :build
   depends_on "ninja" => :build
@@ -15,13 +16,11 @@ class OsinfoDbTools < Formula
   depends_on "libsoup"
 
   def install
-    mkdir "build" do
-      flags = %W[
-        -Dsysconfdir=#{etc}
-      ]
-      system "meson", *std_meson_args, *flags, ".."
-      system "ninja", "install", "-v"
-    end
+    flags = %W[
+      -Dsysconfdir=#{etc}
+    ]
+    system "meson", "setup", "builddir", *std_meson_args, *flags
+    system "ninja", "-C", "builddir", "install", "-v"
   end
 
   test do

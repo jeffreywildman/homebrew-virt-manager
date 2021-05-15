@@ -3,6 +3,7 @@ class VirtViewer < Formula
   homepage "https://virt-manager.org/"
   url "https://virt-manager.org/download/sources/virt-viewer/virt-viewer-10.0.tar.xz"
   sha256 "d23bc0a06e4027c37b8386cfd0286ef37bd738977153740ab1b6b331192389c5"
+  revision 1
 
   depends_on "gettext" => :build
   depends_on "meson" => :build
@@ -16,10 +17,8 @@ class VirtViewer < Formula
   depends_on "spice-gtk"
 
   def install
-    mkdir "build" do
-      system "meson", *std_meson_args, ".."
-      system "ninja", "install", "-v"
-    end
+    system "meson", "setup", "builddir", *std_meson_args
+    system "ninja", "-C", "builddir", "install", "-v"
   end
 
   def post_install
