@@ -70,7 +70,7 @@ class VirtManager < Formula
 
     # virt-manager uses distutils, doesn't like --single-version-externally-managed
     system libexec/"bin/python", "setup.py", "configure", "--prefix=#{libexec}"
-    system libexec/"bin/python", "setup.py", "install", "--no-user-cfg", "--no-update-icon-cache", "--no-compile-schemas"
+    system libexec/"bin/python", "setup.py", "--no-user-cfg", "--no-update-icon-cache", "--no-compile-schemas", "install"
 
     # install virt-manager commands with PATH set to Python virtualenv environment
     bin.install Dir[libexec/"bin/virt-*"]
@@ -94,15 +94,17 @@ class VirtManager < Formula
 end
 __END__
 diff --git a/virtManager/virtmanager.py b/virtManager/virtmanager.py
-index f6d538b..3e78d3c 100755
+index f6d538b..1f01aa5 100755
 --- a/virtManager/virtmanager.py
 +++ b/virtManager/virtmanager.py
-@@ -136,7 +136,7 @@ def parse_commandline():
+@@ -136,8 +136,8 @@ def parse_commandline():
      parser.add_argument("--debug", action="store_true",
          help="Print debug output to stdout (implies --no-fork)",
          default=False)
 -    parser.add_argument("--no-fork", action="store_true",
+-        help="Don't fork into background on startup")
 +    parser.add_argument("--fork", dest='no_fork', action="store_false",
-         help="Don't fork into background on startup")
++        help="Fork into background on startup")
 
      parser.add_argument("--show-domain-creator", action="store_true",
+         help="Show 'New VM' wizard")
