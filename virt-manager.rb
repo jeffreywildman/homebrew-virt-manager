@@ -3,57 +3,63 @@ class VirtManager < Formula
 
   desc "App for managing virtual machines"
   homepage "https://virt-manager.org/"
-  url "https://virt-manager.org/download/sources/virt-manager/virt-manager-2.2.1.tar.gz"
-  sha256 "cfd88d66e834513e067b4d3501217e21352fadb673103bacb9e646da9f029a1b"
-  revision 3
+  url "https://virt-manager.org/download/sources/virt-manager/virt-manager-3.2.0.tar.gz"
+  sha256 "2b6fe3d90d89e1130227e4b05c51e6642d89c839d3ea063e0e29475fd9bf7b86"
+  revision 4
 
-  depends_on "intltool" => :build
-  depends_on "pkg-config" => :build
+  depends_on "docutils" => :build
+  depends_on "gettext" => :build
 
   depends_on "adwaita-icon-theme"
   depends_on "gtk+3"
   depends_on "gtk-vnc"
   depends_on "gtksourceview4"
-  depends_on "hicolor-icon-theme"
   depends_on "libosinfo"
-  depends_on "libvirt"
   depends_on "libvirt-glib"
-  depends_on "libxml2" # need python3 bindings
+  depends_on "libxml2"
   depends_on "osinfo-db"
-  depends_on "py3cairo"
-  depends_on "pygobject3"
   depends_on "python"
   depends_on "spice-gtk"
   depends_on "vte3"
 
-  resource "libvirt-python" do
-    url "https://libvirt.org/sources/python/libvirt-python-6.10.0.tar.gz"
-    sha256 "47a8e90d9f49bc0296d2817f6009e18dbb69844ce10b81c2a2672bccd6f49fd5"
+  resource "certifi" do
+    url "https://files.pythonhosted.org/packages/6d/78/f8db8d57f520a54f0b8a438319c342c61c22759d8f9a1cd2e2180b5e5ea9/certifi-2021.5.30.tar.gz"
+    sha256 "2bbf76fd432960138b3ef6dda3dde0544f27cbf8546c458e60baf371917ba9ee"
+  end
+
+  resource "charset-normalizer" do
+    url "https://files.pythonhosted.org/packages/45/ab/74c77cf4590dfc846c101aee617f390ae679500630dd806b07f1a8e27b7b/charset-normalizer-2.0.1.tar.gz"
+    sha256 "ad0da505736fc7e716a8da15bf19a985db21ac6415c26b34d2fafd3beb3d927e"
   end
 
   resource "idna" do
-    url "https://pypi.io/packages/source/i/idna/idna-2.8.tar.gz"
-    sha256 "c357b3f628cf53ae2c4c05627ecc484553142ca23264e593d327bcde5e9c3407"
+    url "https://files.pythonhosted.org/packages/cb/38/4c4d00ddfa48abe616d7e572e02a04273603db446975ab46bbcd36552005/idna-3.2.tar.gz"
+    sha256 "467fbad99067910785144ce333826c71fb0e63a425657295239737f7ecd125f3"
   end
 
-  resource "certifi" do
-    url "https://pypi.io/packages/source/c/certifi/certifi-2019.11.28.tar.gz"
-    sha256 "25b64c7da4cd7479594d035c08c2d809eb4aab3a26e5a990ea98cc450c320f1f"
+  resource "libvirt-python" do
+    url "https://files.pythonhosted.org/packages/c5/39/cb8d3975cb285b08ad0fb0d7dc655b1da17f5d3ff53f294ef5b83381c394/libvirt-python-7.5.0.tar.gz"
+    sha256 "002ff458a8eca1caf5d45dffe68b44a6d0ce115496373872355de0d589c578d9"
   end
 
-  resource "chardet" do
-    url "https://pypi.io/packages/source/c/chardet/chardet-3.0.4.tar.gz"
-    sha256 "84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae"
+  resource "pycairo" do
+    url "https://files.pythonhosted.org/packages/bc/3f/64e6e066d163fbcf13213f9eeda0fc83376243335ea46a66cefd70d62e8f/pycairo-1.20.1.tar.gz"
+    sha256 "1ee72b035b21a475e1ed648e26541b04e5d7e753d75ca79de8c583b25785531b"
   end
 
-  resource "urllib3" do
-    url "https://pypi.io/packages/source/u/urllib3/urllib3-1.25.7.tar.gz"
-    sha256 "f3c5fd51747d450d4dcf6f923c81f78f811aab8205fda64b0aba34a4e48b0745"
+  resource "PyGObject" do
+    url "https://files.pythonhosted.org/packages/51/2f/4d5d5afb7000b9151e33952b59163c9389bd867ac6fe85d62f85831fa061/PyGObject-3.40.1.tar.gz"
+    sha256 "6fb599aa59ceb9dd05fafb0d72b3862943e7d5e85c8ef6c74856bc6d4321cbab"
   end
 
   resource "requests" do
-    url "https://pypi.io/packages/source/r/requests/requests-2.22.0.tar.gz"
-    sha256 "11e007a8a2aa0323f5a921e9e6a2d7e4e67d9877e85773fba9ba6419025cbeb4"
+    url "https://files.pythonhosted.org/packages/e7/01/3569e0b535fb2e4a6c384bdbed00c55b9d78b5084e0fb7f4d0bf523d7670/requests-2.26.0.tar.gz"
+    sha256 "b8aa58f8cf793ffd8782d3d8cb19e66ef36f7aba4353eec859e74678b01b07a7"
+  end
+
+  resource "urllib3" do
+    url "https://files.pythonhosted.org/packages/4f/5a/597ef5911cb8919efe4d86206aa8b2658616d676a7088f0825ca08bd7cb8/urllib3-1.26.6.tar.gz"
+    sha256 "f57b4c16c62fa2760b7e3d97c35b255512fb6b59a259730f36ba32ce9f8e342f"
   end
 
   # virt-manager doesn't prompt for password on macOS unless --no-fork flag is provided
@@ -64,14 +70,8 @@ class VirtManager < Formula
     venv.pip_install resources
 
     # virt-manager uses distutils, doesn't like --single-version-externally-managed
-    system "#{libexec}/bin/python", "setup.py",
-                     "configure",
-                     "--prefix=#{libexec}"
-    system "#{libexec}/bin/python", "setup.py",
-                     "--no-user-cfg",
-                     "--no-update-icon-cache",
-                     "--no-compile-schemas",
-                     "install"
+    system libexec/"bin/python", "setup.py", "configure", "--prefix=#{libexec}"
+    system libexec/"bin/python", "setup.py", "--no-user-cfg", "--no-update-icon-cache", "--no-compile-schemas", "install"
 
     # install virt-manager commands with PATH set to Python virtualenv environment
     bin.install Dir[libexec/"bin/virt-*"]
@@ -84,27 +84,28 @@ class VirtManager < Formula
 
   def post_install
     # manual schema compile step
-    system "#{Formula["glib"].opt_bin}/glib-compile-schemas", "#{HOMEBREW_PREFIX}/share/glib-2.0/schemas"
+    system Formula["glib"].opt_bin/"glib-compile-schemas", HOMEBREW_PREFIX/"share/glib-2.0/schemas"
     # manual icon cache update step
-    system "#{Formula["gtk+3"].opt_bin}/gtk3-update-icon-cache", "#{HOMEBREW_PREFIX}/share/icons/hicolor"
+    system Formula["gtk+3"].opt_bin/"gtk3-update-icon-cache", HOMEBREW_PREFIX/"share/icons/hicolor"
   end
 
   test do
-    system "#{bin}/virt-manager", "--version"
+    system bin/"virt-manager", "--version"
   end
 end
 __END__
-diff --git a/virt-manager b/virt-manager
-index 15d5109..8ee305a 100755
---- a/virt-manager
-+++ b/virt-manager
-@@ -151,7 +151,8 @@ def parse_commandline():
+diff --git a/virtManager/virtmanager.py b/virtManager/virtmanager.py
+index f6d538b..1f01aa5 100755
+--- a/virtManager/virtmanager.py
++++ b/virtManager/virtmanager.py
+@@ -136,8 +136,8 @@ def parse_commandline():
+     parser.add_argument("--debug", action="store_true",
          help="Print debug output to stdout (implies --no-fork)",
          default=False)
-     parser.add_argument("--no-fork", action="store_true",
+-    parser.add_argument("--no-fork", action="store_true",
 -        help="Don't fork into background on startup")
-+        help="Don't fork into background on startup",
-+        default=True)
++    parser.add_argument("--fork", dest='no_fork', action="store_false",
++        help="Fork into background on startup")
 
      parser.add_argument("--show-domain-creator", action="store_true",
          help="Show 'New VM' wizard")
