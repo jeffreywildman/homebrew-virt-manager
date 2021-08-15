@@ -28,8 +28,8 @@ class VirtManager < Formula
   end
 
   resource "charset-normalizer" do
-    url "https://files.pythonhosted.org/packages/45/ab/74c77cf4590dfc846c101aee617f390ae679500630dd806b07f1a8e27b7b/charset-normalizer-2.0.1.tar.gz"
-    sha256 "ad0da505736fc7e716a8da15bf19a985db21ac6415c26b34d2fafd3beb3d927e"
+    url "https://files.pythonhosted.org/packages/e7/4e/2af0238001648ded297fb54ceb425ca26faa15b341b4fac5371d3938666e/charset-normalizer-2.0.4.tar.gz"
+    sha256 "f23667ebe1084be45f6ae0538e4a5a865206544097e4e8bbcacf42cd02a348f3"
   end
 
   resource "idna" do
@@ -38,8 +38,8 @@ class VirtManager < Formula
   end
 
   resource "libvirt-python" do
-    url "https://files.pythonhosted.org/packages/c5/39/cb8d3975cb285b08ad0fb0d7dc655b1da17f5d3ff53f294ef5b83381c394/libvirt-python-7.5.0.tar.gz"
-    sha256 "002ff458a8eca1caf5d45dffe68b44a6d0ce115496373872355de0d589c578d9"
+    url "https://files.pythonhosted.org/packages/a0/24/a8eefb64e4c7baf5a0006dd3b2c5ce6aef334ff15c9c29066c6791a72fe1/libvirt-python-7.6.0.tar.gz"
+    sha256 "d8f9d4efdc79ad6b44bc43e49d6fa56d119895ba6c0bb000c6514ce84f19a13e"
   end
 
   resource "pycairo" do
