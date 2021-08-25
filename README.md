@@ -34,6 +34,11 @@ I've not yet tested `virt-manager` against any local URIs/hypervisors. If you ge
 
 If `virt-manager` or its dependencies have been upgraded recently (`brew upgrade`), it's possible that a reinstall may fix the issue (see [#39](https://github.com/jeffreywildman/homebrew-virt-manager/issues/39)).
 
+
+#### Why am I getting the error "No GSettings schemas are installed on the system"?
+
+You must make sure that  ``/usr/local/share`` is not missing from XDG_DATA_DIRS. If it is, add it to XDG_DATA_DIRS. You can make sure by running ``echo $XDG_DATA_DIRS`` .
+
 [homebrew]: http://brew.sh/
 [virt-manager]: https://virt-manager.org/
 [virt-viewer]: https://virt-manager.org/
