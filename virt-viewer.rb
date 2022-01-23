@@ -1,9 +1,9 @@
 class VirtViewer < Formula
   desc "App for virtualized guest interaction"
   homepage "https://virt-manager.org/"
-  url "https://virt-manager.org/download/sources/virt-viewer/virt-viewer-10.0.tar.xz"
-  sha256 "d23bc0a06e4027c37b8386cfd0286ef37bd738977153740ab1b6b331192389c5"
-  revision 3
+  url "https://virt-manager.org/download/sources/virt-viewer/virt-viewer-11.0.tar.xz"
+  sha256 "a43fa2325c4c1c77a5c8c98065ac30ef0511a21ac98e590f22340869bad9abd0"
+  revision 0
 
   depends_on "gettext" => :build
   depends_on "meson" => :build
@@ -71,3 +71,31 @@ index e5ed47b..26f386f 100644
  subdir('icons')
  subdir('src')
  subdir('po')
+diff --git a/data/meson.build b/data/meson.build
+index d718491..4325108 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -2,7 +2,6 @@ if host_machine.system() != 'windows'
+   desktop = 'remote-viewer.desktop'
+
+   i18n.merge_file (
+-    desktop,
+     type: 'desktop',
+     input: desktop + '.in',
+     output: desktop,
+@@ -14,7 +13,6 @@ if host_machine.system() != 'windows'
+   mimetypes = 'virt-viewer-mime.xml'
+
+   i18n.merge_file (
+-    mimetypes,
+     type: 'xml',
+     input: mimetypes + '.in',
+     output: mimetypes,
+@@ -27,7 +25,6 @@ if host_machine.system() != 'windows'
+   metainfo = 'remote-viewer.appdata.xml'
+
+   i18n.merge_file (
+-    metainfo,
+     type: 'xml',
+     input: metainfo + '.in',
+     output: metainfo,
