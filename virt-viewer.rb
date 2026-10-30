@@ -1,9 +1,11 @@
 class VirtViewer < Formula
   desc "App for virtualized guest interaction"
   homepage "https://virt-manager.org/"
-  url "https://releases.pagure.org/virt-viewer/virt-viewer-11.0.tar.xz"
-  sha256 "a43fa2325c4c1c77a5c8c98065ac30ef0511a21ac98e590f22340869bad9abd0"
-  revision 0
+  url "https://gitlab.com/virt-viewer/virt-viewer/-/archive/a634fa8d9fbc59b093f2f07110b2c867f622599d/virt-viewer-a634fa8d9fbc59b093f2f07110b2c867f622599d.tar.gz"
+  sha256 "779d5b30f3231d39ce681c7fa6344cca5755fda0448164692d52e61f8724dc22"
+  version "11.0+git20260805"
+
+  head "https://gitlab.com/virt-viewer/virt-viewer.git", branch: "master"
 
   depends_on "gettext" => :build
   depends_on "meson" => :build
@@ -14,14 +16,18 @@ class VirtViewer < Formula
   depends_on "glib"
   depends_on "gtk+3"
   depends_on "gtk-vnc"
+  depends_on "libvirt"
   depends_on "libvirt-glib"
   depends_on "shared-mime-info"
   depends_on "spice-gtk"
 
+  # Upstream installs a post_install.py hook that regenerates mime/icon/desktop
+  # caches inside the Cellar; those files collide with the prefix copies at
+  # `brew link` time. Homebrew refreshes the caches in post_install instead.
   patch :DATA
 
   def install
-    system "meson", "setup", "builddir", *std_meson_args
+    system "meson", "setup", "builddir", "-Dovirt=disabled", *std_meson_args
     system "ninja", "-C", "builddir", "install", "-v"
   end
 
@@ -37,30 +43,30 @@ class VirtViewer < Formula
 end
 __END__
 diff --git a/meson.build b/meson.build
-index e5ed47b..26f386f 100644
+index 5f2649c..5293cdb 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -539,30 +539,6 @@ i18n = import('i18n')
- i18n_itsdir = join_paths(meson.source_root(), 'data', 'gettext')
+@@ -535,30 +535,6 @@ i18n = import('i18n')
+ i18n_itsdir = join_paths(meson.project_source_root(), 'data', 'gettext')
  top_include_dir = [include_directories('.')]
-
+ 
 -update_mime_database = find_program('update-mime-database', required: false)
 -update_icon_cache = find_program('gtk-update-icon-cache', required: false)
 -update_desktop_database = find_program('update-desktop-database', required: false)
 -
 -update_mime_database_path = ''
 -if update_mime_database.found()
--  update_mime_database_path = update_mime_database.path()
+-  update_mime_database_path = update_mime_database.full_path()
 -endif
 -
 -update_icon_cache_path = ''
 -if update_icon_cache.found()
--  update_icon_cache_path = update_icon_cache.path()
+-  update_icon_cache_path = update_icon_cache.full_path()
 -endif
 -
 -update_desktop_database_path = ''
 -if update_desktop_database.found()
--  update_desktop_database_path = update_desktop_database.path()
+-  update_desktop_database_path = update_desktop_database.full_path()
 -endif
 -
 -meson.add_install_script('build-aux/post_install.py',
@@ -71,31 +77,3 @@ index e5ed47b..26f386f 100644
  subdir('icons')
  subdir('src')
  subdir('po')
-diff --git a/data/meson.build b/data/meson.build
-index d718491..4325108 100644
---- a/data/meson.build
-+++ b/data/meson.build
-@@ -2,7 +2,6 @@ if host_machine.system() != 'windows'
-   desktop = 'remote-viewer.desktop'
-
-   i18n.merge_file (
--    desktop,
-     type: 'desktop',
-     input: desktop + '.in',
-     output: desktop,
-@@ -14,7 +13,6 @@ if host_machine.system() != 'windows'
-   mimetypes = 'virt-viewer-mime.xml'
-
-   i18n.merge_file (
--    mimetypes,
-     type: 'xml',
-     input: mimetypes + '.in',
-     output: mimetypes,
-@@ -27,7 +25,6 @@ if host_machine.system() != 'windows'
-   metainfo = 'remote-viewer.appdata.xml'
-
-   i18n.merge_file (
--    metainfo,
-     type: 'xml',
-     input: metainfo + '.in',
-     output: metainfo,
